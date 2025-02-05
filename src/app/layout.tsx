@@ -4,7 +4,6 @@ import "./globals.css";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faEnvelope, faFileAlt, faProjectDiagram} from "@fortawesome/free-solid-svg-icons";
 import {faGithub} from "@fortawesome/free-brands-svg-icons"; // 从 brands 模块中导入 faGithub
-import {AuroraBackground} from "@/components/ui/aurora-background";
 
 // const geistSans = Geist({
 //     variable: "--font-geist-sans",
