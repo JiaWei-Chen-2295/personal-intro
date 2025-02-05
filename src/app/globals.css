@@ -1,21 +1,94 @@
+/* globals.css */
+@import "@fortawesome/fontawesome-svg-core/styles.css"; /* 引入 Font Awesome CSS */
+@import "tailwindcss";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
-  color: var(--foreground);
-  background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+
+
+/* 导航栏样式 */
+.blog-header {
+    position: fixed; /* 固定在顶部 */
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(255, 255, 255, 0.75 s); /* 半透明白色背景 */
+    backdrop-filter: blur(20px); /* 云母效果 */
+    color: #fafafa; /* 黑色文字 */
+    padding: 10px 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 添加阴影 */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000; /* 确保在最上层 */
+}
+
+.header-logo h1 {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.header-links {
+    display: flex;
+    gap: 20px;
+}
+
+.header-links a {
+    color: #fafafa;
+    text-decoration: none;
+    transition: color 0.3s ease; /* 添加过渡效果 */
+    display: flex;
+    align-items: center;
+}
+
+.header-links a:hover {
+    color: #0070f3; /* 悬停时变为蓝色 */
+}
+
+.contact-links {
+    display: flex;
+    gap: 20px;
+}
+
+.contact-links a {
+    color: #fafafa;
+    text-decoration: none;
+    transition: color 0.3s ease; /* 添加过渡效果 */
+    display: flex;
+    align-items: center;
+}
+
+.contact-links a:hover {
+    color: #0070f3; /* 悬停时变为蓝色 */
+}
+
+/* ThreeScene 容器样式 */
+/* 修改 ThreeScene 容器样式 */
+.ThreeScene-container {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 50vw; /* 占据视口一半宽度 */
+    height: 100vh;
+    overflow: hidden;
+    transform: translateY(-50%);
+    animation: slideIn 1.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translate(-100%, -50%);
+        opacity: 0;
+    }
+    to {
+        transform: translate(0, -50%);
+        opacity: 1;
+    }
+}
+
+

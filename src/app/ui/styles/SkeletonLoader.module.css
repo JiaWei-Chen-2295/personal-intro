@@ -1,0 +1,27 @@
+/* styles/SkeletonLoader.module.css */
+
+.hemisphereContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 300px; /* Adjust height as needed */
+    width: 100%;
+    background-color: #f5f5f5; /* Background color for the container */
+}
+
+.hemisphereSkeleton {
+    width: 200px; /* Diameter of the hemisphere */
+    height: 100px; /* Radius of the hemisphere */
+    background: linear-gradient(90deg, #e0e0e0, #f0f0f0, #e0e0e0);
+    border-radius: 50% / 100% 100% 0 0; /* Creates a hemispherical shape */
+    animation: shimmer 1.5s infinite ease-in-out;
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -300px 0;
+    }
+    100% {
+        background-position: 300px 0;
+    }
+}
