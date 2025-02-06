@@ -1,11 +1,11 @@
 "use client"
-import type {Metadata} from "next";
+import type { Metadata } from "next";
 import "./globals.css";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faEnvelope, faFileAlt, faProjectDiagram} from "@fortawesome/free-solid-svg-icons";
-import {faGithub} from "@fortawesome/free-brands-svg-icons"; // 从 brands 模块中导入 faGithub
-import {useState} from "react"; // 添加 useState 引入
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEnvelope, faFileAlt, faProjectDiagram } from "@fortawesome/free-solid-svg-icons";
+import { faGithub } from "@fortawesome/free-brands-svg-icons"; // 从 brands 模块中导入 faGithub
+import { useState } from "react";
+import Notification from "@/app/ui/common/Notification"; // 添加 useState 引入
 
 export default function RootLayout({
                                        children,
@@ -14,6 +14,13 @@ export default function RootLayout({
 }>) {
     const [isEmailCardVisible, setIsEmailCardVisible] = useState(false);
     const [isMouseOverCard, setIsMouseOverCard] = useState(false); // 添加新的状态来管理鼠标是否在卡片上
+    const [isNotificationVisible, setIsNotificationVisible] = useState(false);
+    const [notificationMessage, setNotificationMessage] = useState("");
+
+    const showNotification = (message: string) => {
+        setNotificationMessage(message);
+        setIsNotificationVisible(true);
+    };
 
     return (
         <html lang="en">
@@ -63,14 +70,15 @@ export default function RootLayout({
                             <p>我的邮箱是:</p>
                             <p className="mr-2 p-2">javierchen22952295@gmail.com</p>
                             <button
-
                                 className={"dark: text-white"}
                                 onClick={() => {
-                                navigator.clipboard.writeText("javierchen22952295@gmail.com");
-                                setIsEmailCardVisible(false);
-
-                            }
-                            }>
+                                    navigator.clipboard.writeText("javierchen22952295@gmail.com").then(() => {
+                                        showNotification("复制成功");
+                                        console.log("复制成功")
+                                    }, err => {});
+                                    setIsEmailCardVisible(false);
+                                }}
+                            >
                                 <p
                                     className={"dark: text-white"}
                                 >Copy</p>
@@ -105,6 +113,11 @@ export default function RootLayout({
         <div className="mt-10">
             {children}
         </div>
+        <Notification
+            message={notificationMessage}
+            isVisible={isNotificationVisible}
+            onClose={() => setIsNotificationVisible(false)}
+        />
         </body>
         </html>
     );

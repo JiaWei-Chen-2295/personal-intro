@@ -48,7 +48,7 @@ export default function FirstContainer() {
                             className={"bg-gray-50 flex flex-col justify-center relative group/card  dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] sm:w-[30rem] rounded-xl pt-6 pb-6 border blur(30)"}
                         >
                             <CardItem
-                                className={"text-white text-2xl flex flex-col w-full justify-center items-center"}
+                                className={"text-white text-2xl flex flex-col w-full justify-center items-center dark:text-black"}
                                 >
                                 <h2>This is</h2>
                             </CardItem>

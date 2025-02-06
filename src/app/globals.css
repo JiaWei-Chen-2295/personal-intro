@@ -162,6 +162,9 @@ button {
 
 button {
     --primary-color: #111;
+    @media (prefers-color-scheme: dark) {
+        --primary-color: #fff;
+    }
     --hovered-color: #0070f3;
     position: relative;
     display: flex;
