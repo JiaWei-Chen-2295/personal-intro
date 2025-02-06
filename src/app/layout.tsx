@@ -1,10 +1,9 @@
 "use client"
-import type { Metadata } from "next";
 import "./globals.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEnvelope, faFileAlt, faProjectDiagram } from "@fortawesome/free-solid-svg-icons";
-import { faGithub } from "@fortawesome/free-brands-svg-icons"; // 从 brands 模块中导入 faGithub
-import { useState } from "react";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faEnvelope, faFileAlt, faProjectDiagram} from "@fortawesome/free-solid-svg-icons";
+import {faGithub} from "@fortawesome/free-brands-svg-icons"; // 从 brands 模块中导入 faGithub
+import {useState} from "react";
 import Notification from "@/app/ui/common/Notification"; // 添加 useState 引入
 
 export default function RootLayout({
@@ -13,15 +12,24 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     const [isEmailCardVisible, setIsEmailCardVisible] = useState(false);
-    const [isMouseOverCard, setIsMouseOverCard] = useState(false); // 添加新的状态来管理鼠标是否在卡片上
-    const [isNotificationVisible, setIsNotificationVisible] = useState(false);
-    const [notificationMessage, setNotificationMessage] = useState("");
+    const [isMouseOverCard, setIsMouseOverCard] = useState(false);
+    const [notifications, setNotifications] = useState<{ id: number; message: string; type: 'success' | 'warning' | 'error' | 'info' }[]>([]);
+    // 通过 ID 允许出现多个通知
+    let notificationId = 0;
 
-    const showNotification = (message: string) => {
-        setNotificationMessage(message);
-        setIsNotificationVisible(true);
+    const showNotification = (message: string, type: 'success' | 'warning' | 'error' | 'info') => {
+        const id = notificationId++;
+        setNotifications((prev) => [...prev, { id, message, type }]);
+
+        // 自动移除通知
+        setTimeout(() => {
+            removeNotification(id);
+        }, 3000);
     };
 
+    const removeNotification = (id: number) => {
+        setNotifications((prev) => prev.filter((notification) => notification.id !== id));
+    };
     return (
         <html lang="en">
         <body
@@ -73,8 +81,7 @@ export default function RootLayout({
                                 className={"dark: text-white"}
                                 onClick={() => {
                                     navigator.clipboard.writeText("javierchen22952295@gmail.com").then(() => {
-                                        showNotification("复制成功");
-                                        console.log("复制成功")
+                                        showNotification("复制成功", 'success');
                                     }, err => {});
                                     setIsEmailCardVisible(false);
                                 }}
@@ -113,11 +120,17 @@ export default function RootLayout({
         <div className="mt-10">
             {children}
         </div>
-        <Notification
-            message={notificationMessage}
-            isVisible={isNotificationVisible}
-            onClose={() => setIsNotificationVisible(false)}
-        />
+        <div className="fixed top-5 right-5 space-y-2 z-2000">
+            {notifications.map((notification) => (
+                <Notification
+                    key={notification.id}
+                    message={notification.message}
+                    type={notification.type}
+                    isVisible={true}
+                    onClose={() => removeNotification(notification.id)}
+                />
+            ))}
+        </div>
         </body>
         </html>
     );
