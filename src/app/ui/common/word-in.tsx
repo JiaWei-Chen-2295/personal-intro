@@ -1,7 +1,6 @@
 "use client"
 
 import {FC, useRef} from "react"
-// @ts-expect-error need motion
 import {HTMLMotionProps, motion, useAnimation, useInView} from "motion/react"
 
 type AnimationType =

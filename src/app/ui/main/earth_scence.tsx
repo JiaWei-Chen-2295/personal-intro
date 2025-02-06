@@ -15,7 +15,7 @@ const Config = {
         texture: '/ThreeScenceModels/59-earth/textures/夜景地球16384x8192.jpg', // 夜晚纹理
         textures: {
             'light': '/ThreeScenceModels/59-earth/textures/earth albedo.jpg',
-            'dark': '/ThreeScenceModels/59-earth/textures/夜景地球16384x8192.jpg'
+            'dark': '/ThreeScenceModels/59-earth/textures/earth albedo.jpg'
         },
         scale: 0.003,      // 模型缩放比例
         position: {        // 初始位置偏移
@@ -95,7 +95,7 @@ const ThreeScene = () => {
     const loadModel = (scene: THREE.Scene, width: number, height: number) => {
         new FBXLoader().load(
             CONFIG.model.path,
-            (object) => {
+            (object: THREE.Object3D) => {
                 console.log('Model loaded successfully:', object);
 
                 const box = new THREE.Box3().setFromObject(object);
@@ -140,10 +140,7 @@ const ThreeScene = () => {
                     }
                 );
             },
-            (xhr) => {
-                console.log(`FBX loading progress: ${xhr.loaded / xhr.total * 100}%`);
-            },
-            (error) => {
+            (error: Error) => {
                 console.error('Error loading FBX file:', error);
             }
         );
@@ -190,6 +187,7 @@ const ThreeScene = () => {
         const animate = () => {
             requestAnimationFrame(animate);
             if (modelRef.current) {
+                // @ts-ignore
                 modelRef.current.rotation[CONFIG.model.rotation.axis] += CONFIG.model.rotation.speed;
             }
             renderer.render(scene, camera);

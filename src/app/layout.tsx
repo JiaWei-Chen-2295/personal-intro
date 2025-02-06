@@ -30,12 +30,8 @@ export default function RootLayout({
         <body
             className={"antialiasing bg-black"}
         >
-        <div
-            className={"blog-header"}
-        >
-            <div
-                className={"header-logo"}
-            >
+        <div className={"blog-header flex justify-between items-center"}>
+            <div className={"header-logo"}>
                 <h1>JavierChen</h1>
             </div>
 
@@ -54,7 +50,7 @@ export default function RootLayout({
                 </div>
             </div>
 
-            <div className={"contact-links"}>
+            <div className={"contact-links flex items-center"}>
                 <div className={"contact-links-github"}>
                     <a href={"https://github.com/"} target="_blank" rel="noopener noreferrer">
                         <FontAwesomeIcon icon={faGithub} className="mr-2"/>
@@ -65,6 +61,13 @@ export default function RootLayout({
                         <FontAwesomeIcon icon={faEnvelope} className="mr-2"/>
                     </a>
                 </div>
+
+                <label className="ui-switch">
+                    <input type="checkbox" className="hidden" />
+                    <div className="slider relative w-12 h-6 bg-gray-300 rounded-full cursor-pointer">
+                        <div className="circle absolute top-0 left-0 w-6 h-6 bg-white rounded-full transition-transform duration-150 ease-in-out"></div>
+                    </div>
+                </label>
             </div>
         </div>
             <div className="mt-10"> {/* 添加一些间距以避免内容被导航栏遮挡 */}
