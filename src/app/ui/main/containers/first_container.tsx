@@ -1,10 +1,11 @@
 'use client'
-import {SparklesCore} from "@components/ui/sparkles";
+import {SparklesCore} from "@/app/ui/common/sparkles";
 import ThreeScene from "@/app/ui/main/earth_scence";
-import {CardBody, CardContainer, CardItem} from "@components/ui/3d-card";
+import {CardBody, CardContainer, CardItem} from "@/app/ui/common/3d-card";
 import {TextAnimate} from "@/app/ui/common/word-in";
 import {useState, useMemo} from "react";
-import {TypewriterEffect} from "@components/ui/typewriter-effect";
+import {TypewriterEffect} from "@/app/ui/common/typewriter-effect";
+import {AnimatePresence} from "framer-motion";
 
 export default function FirstContainer() {
 
@@ -52,7 +53,8 @@ export default function FirstContainer() {
                                 <div
                                     className={"min-h-full min-w-full flex flex-col justify-center items-center w-full border-b-2"}
                                 >
-                                    <TypewriterEffect words={[{text: authorName}]} />
+                                    {/*<TypewriterEffect words={[{text: authorName}]} />*/}
+                                    <TextAnimate text={authorName}/>
                                 </div>
 
                             </CardItem>
