@@ -19,15 +19,42 @@ body {
     top: 0;
     left: 0;
     right: 0;
-    background-color: rgba(255, 255, 255, 0.75s); /* 半透明白色背景 */
+    background-color: rgba(30, 30, 30, 0.9); /* 深灰色背景，稍微透明 */
     backdrop-filter: blur(20px); /* 云母效果 */
-    color: #fafafa; /* 黑色文字 */
-    padding: 10px 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 添加阴影 */
+    color: #fafafa; /* 浅色文字 */
+    padding: 10px 20px; /* 上下 10px，左右 20px 的内边距 */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* 添加阴影，增强层次感 */
     display: flex;
     justify-content: space-between;
     align-items: center;
     z-index: 1000; /* 确保在最上层 */
+    height: 60px; /* 设置导航栏的高度 */
+}
+
+/* 链接样式 */
+.header-links a {
+    color: #333; /* 默认颜色 */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.header-links a:hover {
+    color: #007BFF; /* 悬停时变为蓝色 */
+}
+
+/* 小屏幕设备的样式调整 */
+@media (max-width: 768px) {
+    .blog-header {
+        padding: 5px 10px; /* 减少内边距 */
+        font-size: 14px; /* 减小字体大小 */
+    }
+}
+
+/* 滚动时的样式变化 */
+.blog-header.scrolled {
+    background-color: rgba(255, 255, 255, 0.9); /* 滚动时增加不透明度 */
+    backdrop-filter: blur(10px); /* 减少模糊效果 */
+    padding: 5px 20px; /* 减少内边距 */
 }
 
 .header-logo h1 {
@@ -35,26 +62,102 @@ body {
     font-weight: bold;
 }
 
+/* 小屏幕设备的样式调整 */
+@media (max-width: 768px) {
+    .blog-header {
+        padding: 5px 10px; /* 减少内边距 */
+        font-size: 14px; /* 减小字体大小 */
+    }
+}
+
+/* 滚动时的样式变化 */
+.blog-header.scrolled {
+    background-color: rgba(255, 255, 255, 0.9); /* 滚动时增加不透明度 */
+    backdrop-filter: blur(10px); /* 减少模糊效果 */
+    padding: 5px 20px; /* 减少内边距 */
+}
+
+.header-logo h1 {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+/* 导航栏链接样式 */
 .header-links {
     display: flex;
-    gap: 20px;
+    gap: 20px; /* 链接之间的间距 */
 }
 
 .header-links a {
-    color: #fafafa;
+    position: relative;
+    color: #fafafa; /* 默认浅色文字 */
     text-decoration: none;
-    transition: color 0.3s ease; /* 添加过渡效果 */
+    padding: 5px 10px;
+    transition: all 0.3s ease;
+    overflow: hidden;
     display: flex;
     align-items: center;
 }
 
-.header-links a:hover {
-    color: #0070f3; /* 悬停时变为蓝色 */
+/* 蓝色渐变光效滑动 */
+.header-links a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0, 149, 255, 0.5), transparent); /* 蓝色渐变光效 */
+    transition: left 0.3s ease;
 }
 
-.contact-links {
-    display: flex;
-    gap: 20px;
+.header-links a:hover::before {
+    left: 100%; /* 悬停时光效从左到右滑过 */
+}
+
+/* 动态背景渐变 */
+.header-links a::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, rgba(0, 149, 255, 0.3), rgba(0, 212, 255, 0.3)); /* 蓝色渐变背景 */
+    transform: skewX(-25deg); /* 倾斜效果 */
+    transition: left 0.3s ease;
+}
+
+.header-links a:hover::after {
+    left: 100%; /* 悬停时背景渐变从左到右滑过 */
+}
+
+/* 下划线动画 */
+.header-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #007BFF, #00D8FF); /* 蓝色渐变下划线 */
+    transition: width 0.3s ease, left 0.3s ease;
+}
+
+.header-links a:hover::after {
+    width: 100%; /* 悬停时下划线从中间向两边扩展 */
+    left: 0;
+}
+
+.header-links a:hover {
+    color: #007BFF; /* 悬停时文字变为蓝色 */
+}
+
+/* 小屏幕设备的样式调整 */
+@media (max-width: 768px) {
+    .header-links a {
+        font-size: 14px; /* 减小链接字体大小 */
+    }
 }
 
 .contact-links a {

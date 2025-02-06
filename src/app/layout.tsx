@@ -71,7 +71,7 @@ export default function RootLayout({
                     </a>
                     {isEmailCardVisible && (
                         <div
-                            className="absolute flex flex-col right-0 mt-5 p-2 bg-white text-black rounded shadow items-center dark:text-white dark:bg-black border"
+                            className="absolute flex flex-col right-0 mt-5 p-2 bg-white text-black rounded shadow items-center dark:text-white dark:bg-black border animate-fade-in"
                             onMouseEnter={() => setIsMouseOverCard(true)}
                             onMouseLeave={() => setIsEmailCardVisible(false)}
                         >
@@ -82,7 +82,8 @@ export default function RootLayout({
                                 onClick={() => {
                                     navigator.clipboard.writeText("javierchen22952295@gmail.com").then(() => {
                                         showNotification("复制成功", 'success');
-                                    }, err => {});
+                                    }, err => {
+                                    });
                                     setIsEmailCardVisible(false);
                                 }}
                             >
@@ -120,16 +121,20 @@ export default function RootLayout({
         <div className="mt-10">
             {children}
         </div>
-        <div className="fixed top-5 right-5 space-y-2 z-2000">
-            {notifications.map((notification) => (
-                <Notification
-                    key={notification.id}
-                    message={notification.message}
-                    type={notification.type}
-                    isVisible={true}
-                    onClose={() => removeNotification(notification.id)}
-                />
-            ))}
+        {/*用于显示通知的容器*/}
+        <div className="fixed inset-x-0 top-[60px] flex items-center justify-center z-50">
+            <div className="flex flex-col space-y-2">
+                {notifications.map((notification) => (
+                    <div key={notification.id} className="max-w-md w-full">
+                        <Notification
+                            message={notification.message}
+                            type={notification.type}
+                            isVisible={true}
+                            onClose={() => removeNotification(notification.id)}
+                        />
+                    </div>
+                ))}
+            </div>
         </div>
         </body>
         </html>
