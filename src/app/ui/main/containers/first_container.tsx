@@ -42,11 +42,16 @@ export default function FirstContainer() {
                     className={"col-span-2"}
                 >
                     <CardContainer
-                        className="inter-var p-6 flex justify-center items-center"
+                        className="inter-var p-6 flex justify-center items-center blur(20)"
                     >
                         <CardBody
-                            className={"bg-gray-50 flex flex-col justify-center relative group/card  dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] sm:w-[30rem] rounded-xl pt-6 pb-6 border"}
+                            className={"bg-gray-50 flex flex-col justify-center relative group/card  dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] sm:w-[30rem] rounded-xl pt-6 pb-6 border blur(30)"}
                         >
+                            <CardItem
+                                className={"text-white text-2xl flex flex-col w-full justify-center items-center"}
+                                >
+                                <h2>This is</h2>
+                            </CardItem>
                             <CardItem
                                 translateZ={50}
                                 className="text-xl font-bold text-neutral-600 dark:text-white items-center flex justify-center p-4 overflow-hidden w-full">
@@ -66,8 +71,8 @@ export default function FirstContainer() {
                                 <div
                                     className={"min-h-full min-w-full flex flex-col justify-center items-center w-full"}
                                 >
-                                    <h1 className="font-bold text-5xl text-white items-center">的个人主页</h1>
-                                    <p className={"font-bold text-white items-center pt-5"}>
+                                    <h1 className="font-bold text-5xl text-black items-center dark:text-white">的个人主页</h1>
+                                    <p className={"font-bold text-black items-center pt-5 dark:text-white"}>
                                         一个喜欢钻研业务逻辑，写出漂亮界面的攻城狮
                                     </p>
                                 </div>

@@ -136,12 +136,12 @@ const ThreeScene = () => {
                         console.log(`Texture loading progress: ${xhr.loaded / xhr.total * 100}%`);
                     },
                     (error) => {
-                        console.error('Error loading texture:', error);
+                        console.log('Error loading texture:', error);
                     }
                 );
             },
             (error: Error) => {
-                console.error('Error loading FBX file:', error);
+                console.log('Error loading FBX file:', error);
             }
         );
     };
