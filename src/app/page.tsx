@@ -2,7 +2,7 @@
 import FirstContainer from "@/app/ui/main/containers/first_container";
 import {LampContainer} from "@/app/ui/common/lamp";
 import {motion} from "framer-motion";
-import {WobbleCard} from "@components/ui/wobble-card";
+import {WobbleCard} from "@/app/ui/common/wobble-card";
 import Image from "next/image";
 import {Progress} from 'antd';
 import type { ProgressProps } from 'antd';
