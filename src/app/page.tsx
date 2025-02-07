@@ -8,11 +8,14 @@ import {Progress} from 'antd';
 import type { ProgressProps } from 'antd';
  // @ts-expect-error aos
 import AOS from 'aos';
+import {useEffect} from "react";
 
 export default function Page() {
 
     // div 动画库
-    AOS.init()
+    useEffect(() => {
+        AOS.init()
+    }, [])
 
     const twoColors: ProgressProps['strokeColor'] = {
         '0%': '#108ee9',
