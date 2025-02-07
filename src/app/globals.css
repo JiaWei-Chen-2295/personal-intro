@@ -2,6 +2,7 @@
 @import "@fortawesome/fontawesome-svg-core/styles.css";
 /* 引入 Font Awesome CSS */
 @import "tailwindcss";
+@import 'aos/dist/aos.css';
 
 @tailwind base;
 @tailwind components;

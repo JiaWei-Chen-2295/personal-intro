@@ -5,6 +5,8 @@ import {faEnvelope, faFileAlt, faProjectDiagram} from "@fortawesome/free-solid-s
 import {faGithub} from "@fortawesome/free-brands-svg-icons"; // 从 brands 模块中导入 faGithub
 import {useState} from "react";
 import Notification from "@/app/ui/common/Notification"; // 添加 useState 引入
+import {message} from 'antd';
+import '@ant-design/v5-patch-for-react-19';
 
 export default function RootLayout({
                                        children,
@@ -13,13 +15,17 @@ export default function RootLayout({
 }>) {
     const [isEmailCardVisible, setIsEmailCardVisible] = useState(false);
     const [isMouseOverCard, setIsMouseOverCard] = useState(false);
-    const [notifications, setNotifications] = useState<{ id: number; message: string; type: 'success' | 'warning' | 'error' | 'info' }[]>([]);
+    const [notifications, setNotifications] = useState<{
+        id: number;
+        message: string;
+        type: 'success' | 'warning' | 'error' | 'info'
+    }[]>([]);
     // 通过 ID 允许出现多个通知
     let notificationId = 0;
 
     const showNotification = (message: string, type: 'success' | 'warning' | 'error' | 'info') => {
         const id = notificationId++;
-        setNotifications((prev) => [...prev, { id, message, type }]);
+        setNotifications((prev) => [...prev, {id, message, type}]);
 
         // 自动移除通知
         setTimeout(() => {
@@ -81,8 +87,9 @@ export default function RootLayout({
                                 className={"dark: text-white"}
                                 onClick={() => {
                                     navigator.clipboard.writeText("javierchen22952295@gmail.com").then(() => {
-                                        showNotification("复制成功", 'success');
+                                        message.success("复制成功")
                                     }, err => {
+                                        message.warning("复制失败")
                                     });
                                     setIsEmailCardVisible(false);
                                 }}
