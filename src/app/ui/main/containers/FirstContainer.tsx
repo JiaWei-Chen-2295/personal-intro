@@ -1,22 +1,17 @@
 'use client'
 import {SparklesCore} from "@/app/ui/common/sparkles";
-import ThreeScene from "@/app/ui/main/earth_scence";
+import EarthScene from "@/app/ui/main/components/EarthScene";
 import {CardBody, CardContainer, CardItem} from "@/app/ui/common/3d-card";
-import {TextAnimate} from "@/app/ui/common/word-in";
-import {useState, useMemo} from "react";
-import {TypewriterEffect} from "@/app/ui/common/typewriter-effect";
-import {AnimatePresence} from "framer-motion";
+import {TextLoop} from "@/app/ui/common/text-loop";
 
 export default function FirstContainer() {
 
     const authorNameList = ["陈佳玮", "JavierChen"];
-    const [authorNameIndex, setAuthorNameIndex] = useState<number>(0);
 
     // setTimeout(() => {
     //     setAuthorNameIndex((authorNameIndex + 1) % authorNameList.length);
     // }, 5525);
 
-    const authorName = useMemo(() => authorNameList[authorNameIndex], [authorNameIndex]);
 
     return (
         <div className={"h-full w-full"}>
@@ -33,11 +28,11 @@ export default function FirstContainer() {
 
                 <div className="h-screen">
                     <div className="ThreeScene-container">
-                        <ThreeScene
-                        />
-
+                        <EarthScene />
                     </div>
                 </div>
+
+
                 <div
                     className={"col-span-2"}
                 >
@@ -58,9 +53,16 @@ export default function FirstContainer() {
                                 <div
                                     className={"min-h-full min-w-full flex flex-col justify-center items-center w-full border-b-2"}
                                 >
-                                    {/*<TypewriterEffect words={[{text: authorName}]} />*/}
-                                    <TextAnimate text={authorName}/>
+
+                                    <TextLoop className='text-4xl'
+                                              interval={5.525}
+                                    >
+                                        {authorNameList.map((authorName, index) => <span key={index}>{authorName}</span>)}
+                                    </TextLoop>
+
+
                                 </div>
+
 
                             </CardItem>
 

@@ -42,7 +42,7 @@ const Config = {
     }
 };
 
-const ThreeScene = () => {
+const EarthScene = () => {
 
     const theme = getTheme();
     console.log("theme", theme);
@@ -206,4 +206,4 @@ const ThreeScene = () => {
     return <div ref={mount} className={"min-w-full min-h-full"} />;
 };
 
-export default ThreeScene;
+export default EarthScene;
