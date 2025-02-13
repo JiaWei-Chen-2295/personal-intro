@@ -11,6 +11,9 @@ import {
     MorphingDialogContainer,
 } from '@/app/ui/common/morphing-dialog';
 import { PlusIcon } from 'lucide-react';
+import TechTag from './TechTag';
+import { FaReact } from 'react-icons/fa';
+import { AiOutlineJava } from "react-icons/ai";
 
 interface ProjectCardProps {
     title: string;
@@ -21,12 +24,12 @@ interface ProjectCardProps {
 }
 
 const ProjectCard: React.FC<ProjectCardProps> = ({
-                                                     title,
-                                                     subtitle,
-                                                     description,
-                                                     imageUrl,
-                                                     projectUrl,
-                                                 }) => {
+    title,
+    subtitle,
+    description,
+    imageUrl,
+    projectUrl,
+}) => {
     return (
         <MorphingDialog
             transition={{
@@ -46,7 +49,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
                     alt={`${title} homepage`}
                     className='h-48 w-full object-cover'
                 />
-                <div className='flex grow flex-row items-end justify-between px-3 py-2'>
+                <div className='flex grow flex-col justify-between px-3 py-2'>
                     <div>
                         <MorphingDialogTitle className='text-zinc-950 dark:text-zinc-50'>
                             {title}
@@ -54,6 +57,18 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
                         <MorphingDialogSubtitle className='text-zinc-700 dark:text-zinc-400'>
                             {subtitle}
                         </MorphingDialogSubtitle>
+                        {/* 标签容器 */}
+                        <div className="flex flex-wrap gap-2 mt-2">
+                            <TechTag
+                                label="React"
+                                icon={FaReact}
+                            />
+                            <TechTag
+                                label="Java"
+                                icon={AiOutlineJava}
+                            />
+                            {/* 可以继续添加更多标签 */}
+                        </div>
                     </div>
                     <button
                         type='button'

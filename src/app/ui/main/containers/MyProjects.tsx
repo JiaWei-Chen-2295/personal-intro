@@ -9,20 +9,9 @@ const MyProjects = () => {
             title: '用户中心',
             subtitle: '全栈后台用户管理系统',
             description: `
-                企业核心的用户中心系统，基于 Spring Boot 后端 + React 前端的 全栈项目 ，实现了用户注册、登录、查询等基础功能。
-                前端
-                React 开发框架
-                Ant Design 端组件库
-                Umi Request 请求库
-                正向和反向代理
-                后端
-                Spring + SpringMVC + SpringBoot 框架
-                MyBatis + MyBatis Plus 数据访问框架
-                部署
-                Linux 单机部署
-                Nginx Web 服务器
-                Docker 容器
-                容器托管平台
+                技术栈: Spring Boot + Mybatis Plus + React + umi.js + Ant Design Pro
+                部署: Docker + Nginx + Linux 部署
+                功能: 用户注册、登录、查询等基础功能
             `,
             imageUrl: '/user_center.png',
             projectUrl: 'https://www.are.na/block/12759029',
@@ -31,70 +20,53 @@ const MyProjects = () => {
             title: '用户中心',
             subtitle: '全栈后台用户管理系统',
             description: `
-                企业核心的用户中心系统，基于 Spring Boot 后端 + React 前端的 全栈项目 ，实现了用户注册、登录、查询等基础功能。
-                前端
-                React 开发框架
-                Ant Design 端组件库
-                Umi Request 请求库
-                正向和反向代理
-                后端
-                Spring + SpringMVC + SpringBoot 框架
-                MyBatis + MyBatis Plus 数据访问框架
-                部署
-                Linux 单机部署
-                Nginx Web 服务器
-                Docker 容器
-                容器托管平台
+                技术栈: Spring Boot + Mybatis Plus + React + umi.js + Ant Design Pro + Nginx
+                部署: Docker + Nginx + Linux 部署
+                功能: 用户注册、登录、查询等基础功能
             `,
             imageUrl: '/user_center.png',
             projectUrl: 'https://www.are.na/block/12759029',
-        },
-        {
+        },{
             title: '用户中心',
             subtitle: '全栈后台用户管理系统',
             description: `
-                企业核心的用户中心系统，基于 Spring Boot 后端 + React 前端的 全栈项目 ，实现了用户注册、登录、查询等基础功能。
-                前端
-                React 开发框架
-                Ant Design 端组件库
-                Umi Request 请求库
-                正向和反向代理
-                后端
-                Spring + SpringMVC + SpringBoot 框架
-                MyBatis + MyBatis Plus 数据访问框架
-                部署
-                Linux 单机部署
-                Nginx Web 服务器
-                Docker 容器
-                容器托管平台
+                技术栈: Spring Boot + Mybatis Plus + React + umi.js + Ant Design Pro + Nginx
+                部署: Docker + Nginx + Linux 部署
+                功能: 用户注册、登录、查询等基础功能
             `,
             imageUrl: '/user_center.png',
             projectUrl: 'https://www.are.na/block/12759029',
-        },
-        {
+        },{
             title: '用户中心',
             subtitle: '全栈后台用户管理系统',
             description: `
-                企业核心的用户中心系统，基于 Spring Boot 后端 + React 前端的 全栈项目 ，实现了用户注册、登录、查询等基础功能。
-                前端
-                React 开发框架
-                Ant Design 端组件库
-                Umi Request 请求库
-                正向和反向代理
-                后端
-                Spring + SpringMVC + SpringBoot 框架
-                MyBatis + MyBatis Plus 数据访问框架
-                部署
-                Linux 单机部署
-                Nginx Web 服务器
-                Docker 容器
-                容器托管平台
+                技术栈: Spring Boot + Mybatis Plus + React + umi.js + Ant Design Pro + Nginx
+                部署: Docker + Nginx + Linux 部署
+                功能: 用户注册、登录、查询等基础功能
+            `,
+            imageUrl: '/user_center.png',
+            projectUrl: 'https://www.are.na/block/12759029',
+        },{
+            title: '用户中心',
+            subtitle: '全栈后台用户管理系统',
+            description: `
+                技术栈: Spring Boot + Mybatis Plus + React + umi.js + Ant Design Pro + Nginx
+                部署: Docker + Nginx + Linux 部署
+                功能: 用户注册、登录、查询等基础功能
+            `,
+            imageUrl: '/user_center.png',
+            projectUrl: 'https://www.are.na/block/12759029',
+        },{
+            title: '用户中心',
+            subtitle: '全栈后台用户管理系统',
+            description: `
+                技术栈: Spring Boot + Mybatis Plus + React + umi.js + Ant Design Pro + Nginx
+                部署: Docker + Nginx + Linux 部署
+                功能: 用户注册、登录、查询等基础功能
             `,
             imageUrl: '/user_center.png',
             projectUrl: 'https://www.are.na/block/12759029',
         },
-
-
     ];
 
     return (
@@ -119,7 +91,7 @@ const MyProjects = () => {
 
             {/* 项目卡片网格布局 */}
             <AnimatedGroup
-                className='grid grid-cols-1 gap-6 p-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'
+                className='grid grid-cols-1 gap-6 p-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3'
                 preset='scale'
             >
                 {projects.map((project, index) => (

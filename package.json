@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack -p 5525",
+    "dev": "next dev --turbopack -p 3000",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -22,6 +22,7 @@
     "@tsparticles/react": "^3.0.0",
     "@tsparticles/slim": "^3.8.1",
     "aos": "^3.0.0-beta.6",
+    "bunx": "^0.1.0",
     "class-variance-authority": "^0.7.1",
     "lucide-react": "^0.474.0",
     "motion": "^12.4.1",
