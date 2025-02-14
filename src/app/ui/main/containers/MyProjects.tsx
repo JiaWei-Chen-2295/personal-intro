@@ -71,7 +71,7 @@ const MyProjects = () => {
     ];
 
     return (
-        <div id="project" className="h-full w-full">
+        <div id="project" className="h-full min-h-screen w-full overflow-y-auto">
             <div className={"pt-20 flex items-center content-center flex-col"}>
 
                 <h2>
@@ -93,7 +93,7 @@ const MyProjects = () => {
             {/* 项目卡片网格布局 */}
             <div className="flex items-center content-center flex-col">
                 <AnimatedGroup
-                    className='grid grid-cols-1 gap-8 p-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3'
+                    className='grid grid-cols-1 gap-11 p-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3'
                     preset='scale'
                 >
                     {projects.map((project, index) => (

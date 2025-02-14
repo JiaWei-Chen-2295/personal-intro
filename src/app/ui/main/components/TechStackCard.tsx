@@ -1,6 +1,5 @@
 'use client'
-
-import { Card, Progress, Text, rem } from '@mantine/core'
+import { Card, Text, rem } from '@mantine/core'
 import { motion } from 'framer-motion'
 import { IconBrandReact, IconBrandPython, IconCloud } from '@tabler/icons-react'
 import { useEffect, useState } from 'react'
@@ -70,7 +69,6 @@ const TechStackCard = ({ technologies }: TechStackProps) => {
                     border: '1px solid rgba(255, 255, 255, 0.1)',
                     boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)'
                 }}>
-
                 {/* 响应式网格布局 */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 m-14">
                     {techItems.map((tech, index) => (
@@ -103,18 +101,20 @@ const TechStackCard = ({ technologies }: TechStackProps) => {
                                                 {tech.level}%
                                             </Text>
                                         </div>
-                                        <Progress
-                                            value={tech.level}
-                                            color={tech.color}
-                                            classNames={{
-                                                root: 'h-2 bg-gray-800',
-                                                section: 'bg-gradient-to-r from-transparent to-white/50'
-                                            }}
-                                            radius="sm"
-                                        />
+                                        {/* 自定义进度条 */}
+                                        <div
+                                            className="h-2 rounded-full bg-gray-700 overflow-hidden"
+                                            style={{ width: '100%' }}>
+                                            <div
+                                                className="h-full rounded-full"
+                                                style={{
+                                                    width: `${tech.level}%`,
+                                                    background: tech.color
+                                                }}
+                                            />
+                                        </div>
                                     </div>
                                 </div>
-
                                 {/* 响应式描述文字 */}
                                 {(activeTechIndex === index) && (
                                     <div className="mt-auto p-2 text-sm text-gray-300 transition-opacity duration-300">
@@ -122,7 +122,6 @@ const TechStackCard = ({ technologies }: TechStackProps) => {
                                     </div>
                                 )}
                             </div>
-
                             {/* 光效 */}
                             <div
                                 className="absolute inset-0 opacity-0 group-hover:opacity-30 transition-opacity pointer-events-none"
@@ -133,7 +132,6 @@ const TechStackCard = ({ technologies }: TechStackProps) => {
                         </motion.div>
                     ))}
                 </div>
-
                 {/* 网格背景 */}
                 <div
                     className="absolute inset-0 -z-10 opacity-20"
