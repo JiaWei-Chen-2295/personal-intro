@@ -1,126 +1,87 @@
-import {LampContainer} from "@/app/ui/common/lamp";
-import {motion} from "framer-motion";
-import {WobbleCard} from "@/app/ui/common/wobble-card";
-import Image from "next/image";
-import {Progress} from 'antd';
-import type {ProgressProps} from 'antd';
+import {IconBrandNextjs} from '@tabler/icons-react'
+import TechStackCard from "@/app/ui/main/components/TechStackCard";
+import {SiSpring, SiSpringboot, SiPython, SiTypescript} from "react-icons/si";
+import {FaJava, FaReact, FaVuejs} from "react-icons/fa";
+import React from "react";
 
 const TechStack = () => {
 
-    // 进度条的渐变颜色
-    const twoColors: ProgressProps['strokeColor'] = {
-        '0%': '#108ee9',
-        '100%': '#87d068',
-    };
+    // 技术栈掌握详情
+    const myTechs = [
+        {
+            name: 'Java',
+            level: 90,
+            icon: <FaJava/>,
+            color: '#fefefe',
+            description: '我使用 Java 进行日常数据结构与算法学习，熟练使用 Java 的框架'
+        },
+        {
+            name: 'Spring MVC',
+            level: 90,
+            icon: <SiSpring/>,
+            color: '#6cb52d'
+        },
+        {
+            name: 'Spring Boot',
+            level: 90,
+            icon: <SiSpringboot/>,
+            color: '#6cb52d'
+        },
+        {
+            name: 'TypeScript',
+            level: 95,
+            icon: <SiTypescript/>,
+            color: '#3178c6'
+        },
+        {
+            name: 'Vue.js',
+            level: 95,
+            icon: <FaVuejs/>,
+            color: '#327859'
+        },
+        {
+            name: 'React',
+            level: 95,
+            icon: <FaReact/>,
+            color: '#3178c6'
+        },
+        {
+            name: 'Next.js',
+            level: 95,
+            icon: <IconBrandNextjs/>,
+            color: '#ffffff'
+        },
+        {
+            name: 'Python',
+            level: 90,
+            icon: <SiPython/>,
+            color: '#ffdc52'
+        },
+
+    ]
 
     return (
         <>
-        <LampContainer>
-            <motion.h1
-                initial={{opacity: 0.5, y: 100}}
-                whileInView={{opacity: 1, y: 0}}
-                transition={{
-                    delay: 0.3,
-                    duration: 0.8,
-                    ease: "easeInOut",
-                }}
-                className=" bg-gradient-to-br from-slate-300 to-slate-350 py-4 bg-clip-text text-center text-4xl font-medium tracking-tight text-transparent md:text-7xl"
-            >
-                <p>技术栈</p>
-            </motion.h1>
-        </LampContainer>
 
-    <div className={"h-full w-full overflow-hidden"}
-         data-aos="fade-up"
-         data-aos-duration="1000"
-    >
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 max-w-7xl mx-auto w-full"
-
-        >
-            <WobbleCard
-                containerClassName="col-span-1 lg:col-span-3 bg-green-800 min-h-[350px] lg:min-h-[600px] xl:min-h-[300px]">
-                <div className="max-w-sm">
-                    <h2 className="max-w-sm md:max-w-lg  text-left  text-base md:text-xl lg:text-3xl font-semibold tracking-[-0.015em] text-white">
-                        Spring + Spring MVC + Spring Boot
-                    </h2>
-                    <Progress percent={66} strokeColor={twoColors} />
-                    <p className="mt-4 max-w-[26rem] text-left  text-base/6 text-neutral-200">
-                        Java WEB 方面的框架
-                    </p>
-                </div>
-                <Image
-                    src="/linear.webp"
-                    width={350}
-                    height={350}
-                    alt="linear demo image"
-                    className="absolute -right-10 md:-right-[40%] lg:-right-[20%] -bottom-10 object-contain rounded-2xl"
-                />
-            </WobbleCard>
-            <WobbleCard
-                containerClassName="col-span-1 lg:col-span-2 h-full bg-blue-800 min-h-[350px] lg:min-h-[300px]"
-                className=""
+            <div className={"h-full w-full overflow-hidden"}
+                 data-aos="fade-up"
+                 data-aos-duration="1000"
             >
-                <div className="max-w-xs">
-                    <h2 className="text-left text-balance text-base md:text-xl lg:text-3xl font-semibold tracking-[-0.015em] text-white">
-                        Javascript & TypeScript
-                    </h2>
-                    <Progress percent={60} strokeColor={twoColors} />
-                    <p className="mt-4 text-left  text-base/6 text-neutral-200">
-                        驱动网页的脚本语言
-                    </p>
-                </div>
-                <Image
-                    src="/linear.webp"
-                    width={350}
-                    height={350}
-                    alt="linear demo image"
-                    className="absolute -right-4 lg:-right-[40%] grayscale filter -bottom-10 object-contain rounded-2xl"
-                />
-            </WobbleCard>
-            <WobbleCard containerClassName="col-span-1 min-h-[300px] bg-yellow-700">
-                <h2 className="max-w-80  text-left text-balance text-base md:text-xl lg:text-3xl font-semibold tracking-[-0.015em] text-white">
-                    Python
-                </h2>
-                <Progress percent={70} strokeColor={twoColors} />
-                <p className="mt-4 max-w-[26rem] text-left  text-base/6 text-neutral-200">
-                    爬虫，数据采集，分析的有力工具
-                </p>
-            </WobbleCard>
-            <WobbleCard containerClassName="col-span-1 min-h-[300px] bg-green-900">
-                <h2 className="max-w-80  text-left text-balance text-base md:text-xl lg:text-3xl font-semibold tracking-[-0.015em] text-white">
-                    Vue.js
-                </h2>
-                <Progress percent={75} strokeColor={twoColors} />
-                <p className="mt-4 max-w-[26rem] text-left  text-base/6 text-neutral-200">
-                    快速搭建web界面的框架
-                </p>
-            </WobbleCard>
-            <WobbleCard
-                containerClassName="col-span-1 lg:col-span-2 h-full bg-pink-800 min-h-[350px] lg:min-h-[300px] bg-blue-800"
-                className=""
-            >
-                <div className="max-w-xs ">
-                    <h2 className="text-left text-balance text-base md:text-xl lg:text-3xl font-semibold tracking-[-0.015em] text-white">
-                        React
-                    </h2>
-                    <Progress percent={60} strokeColor={twoColors} />
-                    <p className="mt-4 text-left  text-base/6 text-neutral-200">
-                        一个用于界面的库
-                    </p>
-                </div>
-                <Image
-                    src="/linear.webp"
-                    width={350}
-                    height={350}
-                    alt="linear demo image"
-                    className="absolute -right-4 lg:-right-[40%] grayscale filter -bottom-10 object-contain rounded-2xl"
-                />
-            </WobbleCard>
+                <div className={"pt-20 flex items-center content-center flex-col"}>
 
-        </div>
-    </div>
+                    <h2>
+                    <span className="text-6xl font-bold text-white">
+                        我的技术栈
+                    </span>
+                    </h2>
+                </div>
+
+                <div className="max-w-3xl mx-auto p-4 pt-10">
+                    <TechStackCard technologies={myTechs}/>
+                </div>
+            </div>
         </>
-)
+    )
 }
 
 export default TechStack;

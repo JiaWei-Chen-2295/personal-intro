@@ -2,8 +2,8 @@ import React from 'react';
 
 const TechTag = ({ label, icon: IconComponent, onClick }) => {
     const tagStyle = {
-        backgroundColor: '#f5f5f5', // 浅灰色背景
-        color: '#333',              // 深色文字
+        backgroundColor: '#f5f5f5',
+        color: '#333',              
     };
 
     return (

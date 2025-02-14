@@ -3,15 +3,11 @@ import {SparklesCore} from "@/app/ui/common/sparkles";
 import EarthScene from "@/app/ui/main/components/EarthScene";
 import {CardBody, CardContainer, CardItem} from "@/app/ui/common/3d-card";
 import {TextLoop} from "@/app/ui/common/text-loop";
+import {isMobileDevice} from "@/lib/MobileDeviceUtil"
 
 export default function FirstContainer() {
 
     const authorNameList = ["陈佳玮", "JavierChen"];
-
-    // setTimeout(() => {
-    //     setAuthorNameIndex((authorNameIndex + 1) % authorNameList.length);
-    // }, 5525);
-
 
     return (
         <div className={"h-full w-full"}>
@@ -24,17 +20,17 @@ export default function FirstContainer() {
                 maxSize={3}
                 className="h-screen w-screen absolute top-0 left-0 z-0 overflow-hidden"
             />
-            <div className="grid grid-cols-3 gap-2 bg-black min-h-screen">
+            <div className="grid grid-cols-3 gap-2 bg-black min-h-screen ">
 
-                <div className="h-screen">
+                {!isMobileDevice() && <div className="h-screen">
                     <div className="ThreeScene-container">
-                        <EarthScene />
+                        <EarthScene/>
                     </div>
-                </div>
+                </div>}
 
 
                 <div
-                    className={"col-span-2"}
+                    className={"col-span-2 sm:col-span-3 lg:col-span-2 xl:col-span-2"}
                 >
                     <CardContainer
                         className="inter-var p-6 flex justify-center items-center blur(20)"
@@ -44,7 +40,7 @@ export default function FirstContainer() {
                         >
                             <CardItem
                                 className={"text-black text-2xl flex flex-col w-full justify-center items-center dark:text-white"}
-                                >
+                            >
                                 <h2>This is</h2>
                             </CardItem>
                             <CardItem
@@ -57,7 +53,8 @@ export default function FirstContainer() {
                                     <TextLoop className='text-4xl'
                                               interval={5.525}
                                     >
-                                        {authorNameList.map((authorName, index) => <span key={index}>{authorName}</span>)}
+                                        {authorNameList.map((authorName, index) => <span
+                                            key={index}>{authorName}</span>)}
                                     </TextLoop>
 
 

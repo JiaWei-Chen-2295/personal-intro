@@ -1,7 +1,8 @@
 import React from 'react';
 import ProjectCard from "@/app/ui/main/components/ProjectCard";
 import {TextShimmerWave} from "@/app/ui/common/text-shimmer-wave";
-import { AnimatedGroup } from '@/app/ui/common/animated-group';
+import {AnimatedGroup} from '@/app/ui/common/animated-group';
+
 
 const MyProjects = () => {
     const projects = [
@@ -26,7 +27,7 @@ const MyProjects = () => {
             `,
             imageUrl: '/user_center.png',
             projectUrl: 'https://www.are.na/block/12759029',
-        },{
+        }, {
             title: '用户中心',
             subtitle: '全栈后台用户管理系统',
             description: `
@@ -36,7 +37,7 @@ const MyProjects = () => {
             `,
             imageUrl: '/user_center.png',
             projectUrl: 'https://www.are.na/block/12759029',
-        },{
+        }, {
             title: '用户中心',
             subtitle: '全栈后台用户管理系统',
             description: `
@@ -46,7 +47,7 @@ const MyProjects = () => {
             `,
             imageUrl: '/user_center.png',
             projectUrl: 'https://www.are.na/block/12759029',
-        },{
+        }, {
             title: '用户中心',
             subtitle: '全栈后台用户管理系统',
             description: `
@@ -56,7 +57,7 @@ const MyProjects = () => {
             `,
             imageUrl: '/user_center.png',
             projectUrl: 'https://www.are.na/block/12759029',
-        },{
+        }, {
             title: '用户中心',
             subtitle: '全栈后台用户管理系统',
             description: `
@@ -90,21 +91,24 @@ const MyProjects = () => {
 
 
             {/* 项目卡片网格布局 */}
-            <AnimatedGroup
-                className='grid grid-cols-1 gap-6 p-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3'
-                preset='scale'
-            >
-                {projects.map((project, index) => (
-                    <ProjectCard
-                        key={index}
-                        title={project.title}
-                        subtitle={project.subtitle}
-                        description={project.description}
-                        imageUrl={project.imageUrl}
-                        projectUrl={project.projectUrl}
-                    />
-                ))}
-            </AnimatedGroup>
+            <div className="flex items-center content-center flex-col">
+                <AnimatedGroup
+                    className='grid grid-cols-1 gap-8 p-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3'
+                    preset='scale'
+                >
+                    {projects.map((project, index) => (
+                        <ProjectCard
+                            key={index}
+                            title={project.title}
+                            subtitle={project.subtitle}
+                            description={project.description}
+                            imageUrl={project.imageUrl}
+                            projectUrl={project.projectUrl}
+                        />
+                    ))}
+                </AnimatedGroup>
+            </div>
+
         </div>
     );
 };
