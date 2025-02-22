@@ -2,6 +2,7 @@
 import { ReactNode } from 'react';
 import { motion, Variants } from 'motion/react';
 import React from 'react';
+import { isMobileDevice } from "@/lib/MobileDeviceUtil";
 
 export type PresetType =
   | 'fade'
@@ -30,7 +31,7 @@ export type AnimatedGroupProps = {
 const defaultContainerVariants: Variants = {
   visible: {
     transition: {
-      staggerChildren: 0.1,
+      staggerChildren: isMobileDevice() ? 0.05 : 0.1, // 减少移动端的staggerChildren时间
     },
   },
 };
@@ -47,11 +48,11 @@ const presetVariants: Record<
   fade: {
   },
   slide: {
-    hidden: { y: 20 },
+    hidden: { y: isMobileDevice() ? 10 : 20 }, // 减少移动端的y偏移量
     visible: { y: 0 },
   },
   scale: {
-    hidden: { scale: 0.8 },
+    hidden: { scale: isMobileDevice() ? 0.9 : 0.8 }, // 减少移动端的scale值
     visible: { scale: 1 },
   },
   blur: {
@@ -59,11 +60,11 @@ const presetVariants: Record<
     visible: { filter: 'blur(0px)' },
   },
   'blur-slide': {
-    hidden: { filter: 'blur(4px)', y: 20 },
+    hidden: { filter: 'blur(4px)', y: isMobileDevice() ? 10 : 20 }, // 减少移动端的y偏移量
     visible: { filter: 'blur(0px)', y: 0 },
   },
   zoom: {
-    hidden: { scale: 0.5 },
+    hidden: { scale: isMobileDevice() ? 0.6 : 0.5 }, // 减少移动端的scale值
     visible: {
       scale: 1,
       transition: { type: 'spring', stiffness: 300, damping: 20 },
@@ -77,7 +78,7 @@ const presetVariants: Record<
     },
   },
   bounce: {
-    hidden: { y: -50 },
+    hidden: { y: isMobileDevice() ? -25 : -50 }, // 减少移动端的y偏移量
     visible: {
       y: 0,
       transition: { type: 'spring', stiffness: 400, damping: 10 },

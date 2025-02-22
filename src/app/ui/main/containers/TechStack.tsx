@@ -1,6 +1,6 @@
 import { IconBrandNextjs } from '@tabler/icons-react'
 import TechStackCard from "@/app/ui/main/components/TechStackCard"
-import { SiSpring, SiSpringboot, SiPython, SiTypescript } from "react-icons/si"
+import {SiSpring, SiSpringboot, SiPython, SiTypescript, SiKotlin, SiJetpackcompose} from "react-icons/si"
 import { FaJava, FaReact, FaVuejs } from "react-icons/fa"
 import React from "react"
 
@@ -56,13 +56,27 @@ const TechStack = () => {
             icon: <SiPython />,
             color: '#ffdc52'
         },
+
+        {
+            name: 'Kotlin',
+            level: 60,
+            icon: <SiKotlin />,
+            color: '#905cc0'
+        },
+
+        {
+            name: 'Jetpack Compose',
+            level: 50,
+            icon: <SiJetpackcompose />,
+            color: '#0473fa'
+        }
     ]
 
     return (
         <>
             {/* 外层容器 */}
             <div
-                className="h-full min-h-screen w-full overflow-y-auto bg-black scrollbar-hide"
+                className="h-full min-h-screen w-full  bg-black scrollbar-hide overflow-y-auto scroll-smooth"
                 data-aos="fade-up"
                 data-aos-duration="1000"
             >
@@ -74,7 +88,7 @@ const TechStack = () => {
                 </div>
                 {/* 技术栈卡片 */}
                 <div
-                    className="w-4/5 mx-auto py-10"
+                    className="w-4/5 mx-auto py-10 sm:min-h-max"
                 >
                     <TechStackCard technologies={myTechs} />
                 </div>

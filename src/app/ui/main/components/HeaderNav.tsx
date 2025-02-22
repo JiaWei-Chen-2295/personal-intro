@@ -56,12 +56,14 @@ const HeaderNav = () => {
                             <button
                                 className={"dark: text-white"}
                                 onClick={() => {
-                                    navigator.clipboard.writeText("javierchen22952295@gmail.com").then(() => {
-                                        message.success("复制成功")
-                                    }, err => {
-                                        message.warning("复制失败")
-                                    });
-                                    setIsEmailCardVisible(false);
+                                    if (typeof window !== 'undefined' && navigator) {
+                                        navigator.clipboard.writeText("javierchen22952295@gmail.com").then(() => {
+                                            message.success("复制成功")
+                                        }, err => {
+                                            message.warning("复制失败")
+                                        });
+                                        setIsEmailCardVisible(false);
+                                    }
                                 }}
                             >
                                 <p

@@ -3,7 +3,11 @@
  * @returns {boolean} True if the device is a mobile device, false otherwise.
  */
 export function isMobileDevice() {
-  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-    navigator.userAgent
-  );
+
+  if (typeof window !== 'undefined' && navigator) {
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+        navigator.userAgent
+    );
+  }
+
 }
