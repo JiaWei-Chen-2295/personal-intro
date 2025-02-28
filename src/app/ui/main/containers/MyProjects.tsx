@@ -7,8 +7,8 @@ import {AnimatedGroup} from '@/app/ui/common/animated-group';
 const MyProjects = () => {
     const projects = [
         {
-            title: '用户中心',
-            subtitle: '全栈后台用户管理系统',
+            title: '用户授权系统',
+            subtitle: '全栈后台统一用户管理系统',
             description: `
                 技术栈: Spring Boot + Mybatis Plus + React + umi.js + Ant Design Pro
                 部署: Docker + Nginx + Linux 部署
@@ -18,54 +18,28 @@ const MyProjects = () => {
             projectUrl: 'https://www.are.na/block/12759029',
         },
         {
-            title: '用户中心',
-            subtitle: '全栈后台用户管理系统',
+            title: 'AI我的英语',
+            subtitle: 'AI驱动自定义英语学习语料app',
             description: `
-                技术栈: Spring Boot + Mybatis Plus + React + umi.js + Ant Design Pro + Nginx
-                部署: Docker + Nginx + Linux 部署
-                功能: 用户注册、登录、查询等基础功能
+                技术栈: Kotlin + Jetpack Compose + OkHttp
             `,
-            imageUrl: '/user_center.png',
+            imageUrl: '/andriod_app/big.jpg',
             projectUrl: 'https://www.are.na/block/12759029',
         }, {
-            title: '用户中心',
-            subtitle: '全栈后台用户管理系统',
+            title: '纪念小程序',
+            subtitle: '智能图片集',
             description: `
-                技术栈: Spring Boot + Mybatis Plus + React + umi.js + Ant Design Pro + Nginx
-                部署: Docker + Nginx + Linux 部署
-                功能: 用户注册、登录、查询等基础功能
+                技术栈: Vue3 + Tailwind CSS + Pinia + axios
             `,
-            imageUrl: '/user_center.png',
+            imageUrl: '/record-me.jpg',
             projectUrl: 'https://www.are.na/block/12759029',
         }, {
-            title: '用户中心',
-            subtitle: '全栈后台用户管理系统',
+            title: '灵魂之交',
+            subtitle: '大数据用户推荐',
             description: `
-                技术栈: Spring Boot + Mybatis Plus + React + umi.js + Ant Design Pro + Nginx
-                部署: Docker + Nginx + Linux 部署
-                功能: 用户注册、登录、查询等基础功能
+                技术栈: Spring Boot + Mybatis Plus + swagger API 文档 + Vue3 + vant UI + ElasticSearch
             `,
-            imageUrl: '/user_center.png',
-            projectUrl: 'https://www.are.na/block/12759029',
-        }, {
-            title: '用户中心',
-            subtitle: '全栈后台用户管理系统',
-            description: `
-                技术栈: Spring Boot + Mybatis Plus + React + umi.js + Ant Design Pro + Nginx
-                部署: Docker + Nginx + Linux 部署
-                功能: 用户注册、登录、查询等基础功能
-            `,
-            imageUrl: '/user_center.png',
-            projectUrl: 'https://www.are.na/block/12759029',
-        }, {
-            title: '用户中心',
-            subtitle: '全栈后台用户管理系统',
-            description: `
-                技术栈: Spring Boot + Mybatis Plus + React + umi.js + Ant Design Pro + Nginx
-                部署: Docker + Nginx + Linux 部署
-                功能: 用户注册、登录、查询等基础功能
-            `,
-            imageUrl: '/user_center.png',
+            imageUrl: '/friend-match.png',
             projectUrl: 'https://www.are.na/block/12759029',
         },
     ];

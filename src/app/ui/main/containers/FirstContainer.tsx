@@ -7,7 +7,6 @@ import {isMobileDevice} from "@/lib/MobileDeviceUtil"
 import Image from "next/image";
 
 
-
 export default function FirstContainer() {
 
     const authorNameList = ["陈佳玮", "JavierChen"];
@@ -93,12 +92,9 @@ export default function FirstContainer() {
                         </CardBody>
 
                     </CardContainer>
-
                 </div>
 
-
             </div>
-
         </div>
 
     )
