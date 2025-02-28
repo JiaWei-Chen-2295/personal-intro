@@ -20,7 +20,7 @@ export default function Page() {
         <Head>
             <title>陈佳玮的个人主页</title>
         </Head>
-        <div className="h-screen w-screen relative">
+        <div className={"overflow-x-hidden"}>
             <FirstContainer />
             <TechStack />
             <MyProjects />

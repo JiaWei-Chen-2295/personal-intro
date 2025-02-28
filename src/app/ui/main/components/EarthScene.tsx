@@ -203,7 +203,13 @@ const EarthScene = () => {
         };
     }, []);
 
-    return <div ref={mount} className={"min-w-full min-h-full"} />;
+    return (
+        <div
+            ref={mount}
+            className="min-w-full min-h-full opacity-0 animate-fade-in"
+            style={{ animationDelay: '0.3s' }}
+        />
+    );
 };
 
 export default EarthScene;

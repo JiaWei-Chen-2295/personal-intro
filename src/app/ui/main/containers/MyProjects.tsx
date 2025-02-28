@@ -71,7 +71,7 @@ const MyProjects = () => {
     ];
 
     return (
-        <div id="project" className="h-full min-h-screen w-full overflow-y-auto scroll-smooth  ">
+        <div id="project" className="h-full min-h-screen w-full">
             <div className={"pt-20 flex items-center content-center flex-col"}>
 
                 <h2>

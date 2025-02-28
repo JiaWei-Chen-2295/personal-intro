@@ -76,7 +76,7 @@ const TechStack = () => {
         <>
             {/* 外层容器 */}
             <div
-                className="h-full min-h-screen w-full  bg-black scrollbar-hide overflow-y-auto scroll-smooth"
+                className="h-full min-h-screen w-full  bg-black "
                 data-aos="fade-up"
                 data-aos-duration="1000"
             >

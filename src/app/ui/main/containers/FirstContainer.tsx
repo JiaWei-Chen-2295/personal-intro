@@ -20,21 +20,26 @@ export default function FirstContainer() {
                 maxSize={3}
                 className="h-screen w-screen absolute top-0 left-0 z-0 overflow-hidden"
             />
-            <div className="grid grid-cols-3 gap-2 bg-black min-h-screen ">
+            <div className="grid grid-cols-1 lg:grid-cols-3 bg-black min-h-screen">
 
-                {!isMobileDevice() && <div className="h-screen">
-                    <div className="ThreeScene-container">
+                {!isMobileDevice() && <div className="hidden lg:block h-screen col-span-1 opacity-0 animate-fade-in">
+                    <div className="ThreeScene-container h-full w-full">
                         <EarthScene/>
                     </div>
                 </div>}
 
-
                 <div
-                    className={"col-span-2 sm:col-span-3 lg:col-span-2 xl:col-span-2"}
+                    className={`                    lg:col-span-2 
+                    ${isMobileDevice() ? 'w-full' : ''}                    flex justify-center items-center
+                    p-4 lg:p-6
+                `}
                 >
                     <CardContainer
-                        className="inter-var p-6 flex justify-center items-center blur(20)"
-                    >
+                        className={`                            inter-var 
+                            w-full max-w-2xl
+                            lg:max-w-4xl
+                            blur(20)
+                        `}>
                         <CardBody
                             className={"bg-gray-50 flex flex-col justify-center relative group/card  dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] sm:w-[30rem] rounded-xl pt-6 pb-6 border blur(30)"}
                         >
