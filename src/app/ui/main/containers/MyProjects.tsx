@@ -23,7 +23,7 @@ const MyProjects = () => {
             description: `
                 技术栈: Kotlin + Jetpack Compose + OkHttp
             `,
-            imageUrl: '/andriod_app/big.jpg',
+            imageUrl: '/andriod_app/small.jpg',
             projectUrl: 'https://www.are.na/block/12759029',
         }, {
             title: '纪念小程序',
