@@ -4,6 +4,9 @@ import EarthScene from "@/app/ui/main/components/EarthScene";
 import {CardBody, CardContainer, CardItem} from "@/app/ui/common/3d-card";
 import {TextLoop} from "@/app/ui/common/text-loop";
 import {isMobileDevice} from "@/lib/MobileDeviceUtil"
+import Image from "next/image";
+
+
 
 export default function FirstContainer() {
 
@@ -43,6 +46,11 @@ export default function FirstContainer() {
                         <CardBody
                             className={"bg-gray-50 flex flex-col justify-center relative group/card  dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] sm:w-[30rem] rounded-xl pt-6 pb-6 border blur(30)"}
                         >
+                            <CardItem
+                                className={"flex flex-col w-full justify-center items-center pb-8"}
+                            >
+                                <Image src={"/icon.png"} alt={"JavierChen's Logo"} width={64} height={64}/>
+                            </CardItem>
                             <CardItem
                                 className={"text-black text-2xl flex flex-col w-full justify-center items-center dark:text-white"}
                             >
