@@ -15,7 +15,7 @@ const Config = {
         texture: '/ThreeScenceModels/59-earth/textures/夜景地球16384x8192.jpg', // 夜晚纹理
         textures: {
             'light': '/ThreeScenceModels/59-earth/textures/earth albedo.jpg',
-            'dark': '/ThreeScenceModels/59-earth/textures/earth albedo.jpg'
+            'dark': '/ThreeScenceModels/59-earth/textures/夜景地球16384x8192.jpg'
         },
         scale: 0.003,      // 模型缩放比例
         position: {        // 初始位置偏移
