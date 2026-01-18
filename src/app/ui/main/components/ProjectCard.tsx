@@ -8,12 +8,10 @@ import {
     MorphingDialogSubtitle,
     MorphingDialogClose,
     MorphingDialogDescription,
-    MorphingDialogContainer,
 } from '@/app/ui/common/morphing-dialog';
 import { PlusIcon } from 'lucide-react';
 import TechTag from './TechTag';
-import { FaReact } from 'react-icons/fa';
-import { AiOutlineJava } from "react-icons/ai";
+import { motion } from 'framer-motion';
 
 interface ProjectCardProps {
     title: string;
@@ -21,6 +19,8 @@ interface ProjectCardProps {
     description: string;
     imageUrl: string;
     projectUrl: string;
+    techStack: string[];
+    status: string;
 }
 
 const ProjectCard: React.FC<ProjectCardProps> = ({
@@ -29,99 +29,93 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
     description,
     imageUrl,
     projectUrl,
+    techStack,
+    status,
 }) => {
+    const getStatusColor = (status: string) => {
+        switch (status) {
+            case '已完成':
+                return 'bg-green-500';
+            case '进行中':
+                return 'bg-yellow-500';
+            case '计划中':
+                return 'bg-blue-500';
+            default:
+                return 'bg-gray-500';
+        }
+    };
+
     return (
-        <MorphingDialog
-            transition={{
-                type: 'spring',
-                bounce: 0.05,
-                duration: 0.25,
-            }}
-        >
-            <MorphingDialogTrigger
-                style={{
-                    borderRadius: '12px',
-                }}
-                className='flex max-w-[270px] flex-col overflow-hidden border border-zinc-950/10 bg-white dark:border-zinc-50/10 dark:bg-zinc-900'
-            >
-                <MorphingDialogImage
-                    src={imageUrl}
-                    alt={`${title} homepage`}
-                    className='h-48 w-full object-cover'
-                />
-                <div className='flex grow flex-col justify-between px-3 py-2'>
-                    <div>
-                        <MorphingDialogTitle className='text-zinc-950 dark:text-zinc-50'>
-                            {title}
-                        </MorphingDialogTitle>
-                        <MorphingDialogSubtitle className='text-zinc-700 dark:text-zinc-400'>
-                            {subtitle}
-                        </MorphingDialogSubtitle>
-                        {/* 标签容器 */}
-                        <div className="flex flex-wrap gap-2 mt-2">
-                            <TechTag
-                                label="React"
-                                icon={FaReact}
+        <MorphingDialog>
+            <MorphingDialogTrigger>
+                <motion.div
+                    data-project-tech={techStack.join(',')}
+                    className="relative group cursor-pointer"
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                >
+                    <div className="absolute inset-0 bg-gradient-to-br from-purple-500/20 to-blue-500/20 rounded-lg" />
+                    <div className="relative p-6 bg-white/5 backdrop-blur-sm rounded-lg border border-white/10">
+                        <div className="flex items-center justify-between mb-4">
+                            <h3 className="text-xl font-bold text-white">{title}</h3>
+                            <span className={`px-2 py-1 text-xs rounded-full ${getStatusColor(status)}`}>
+                                {status}
+                            </span>
+                        </div>
+                        <p className="text-gray-400 mb-4">{subtitle}</p>
+                        <div className="flex flex-wrap gap-2 mb-4">
+                            {techStack.map((tech) => (
+                                <span
+                                    key={tech}
+                                    className="px-2 py-1 text-xs rounded-full bg-white/10 text-white"
+                                >
+                                    {tech}
+                                </span>
+                            ))}
+                        </div>
+                        <div className="relative aspect-video mb-4 rounded-lg overflow-hidden">
+                            <img
+                                src={imageUrl}
+                                alt={title}
+                                className="w-full h-full object-cover"
                             />
-                            <TechTag
-                                label="Java"
-                                icon={AiOutlineJava}
-                            />
-                            {/* 可以继续添加更多标签 */}
                         </div>
                     </div>
-                    <button
-                        type='button'
-                        className='relative ml-1 flex h-6 w-6 shrink-0 scale-100 select-none appearance-none items-center justify-center rounded-lg border border-zinc-950/10 text-zinc-500 transition-colors hover:bg-zinc-100 hover:text-zinc-800 focus-visible:ring-2 active:scale-[0.98] dark:border-zinc-50/10 dark:bg-zinc-900 dark:text-zinc-500 dark:hover:bg-zinc-800 dark:hover:text-zinc-50 dark:focus-visible:ring-zinc-500'
-                        aria-label='Open dialog'
-                    >
-                        <PlusIcon size={12} />
-                    </button>
-                </div>
+                </motion.div>
             </MorphingDialogTrigger>
-            <MorphingDialogContainer>
-                <MorphingDialogContent
-                    style={{
-                        borderRadius: '24px',
-                    }}
-                    className='pointer-events-auto relative flex h-auto w-full flex-col overflow-hidden border border-zinc-950/10 bg-white dark:border-zinc-50/10 dark:bg-zinc-900 sm:w-[500px]'
-                >
-                    <MorphingDialogImage
-                        src={imageUrl}
-                        alt={`${title} homepage`}
-                        className='h-full w-full'
-                    />
-                    <div className='p-6'>
-                        <MorphingDialogTitle className='text-2xl text-zinc-950 dark:text-zinc-50'>
-                            {title}
-                        </MorphingDialogTitle>
-                        <MorphingDialogSubtitle className='text-zinc-700 dark:text-zinc-400'>
-                            {subtitle}
-                        </MorphingDialogSubtitle>
-                        <MorphingDialogDescription
-                            disableLayoutAnimation
-                            variants={{
-                                initial: { opacity: 0, scale: 0.8, y: 100 },
-                                animate: { opacity: 1, scale: 1, y: 0 },
-                                exit: { opacity: 0, scale: 0.8, y: 100 },
-                            }}
-                        >
-                            <p className='mt-2 text-zinc-500 dark:text-zinc-500'>
-                                {description}
-                            </p>
-                            <a
-                                className='mt-2 inline-flex text-zinc-500 underline'
-                                href={projectUrl}
-                                target='_blank'
-                                rel='noopener noreferrer'
+
+            <MorphingDialogContent>
+                <div className="p-6">
+                    <h2 className="text-2xl font-bold text-white mb-2">{title}</h2>
+                    <p className="text-gray-400 mb-4">{subtitle}</p>
+                    <div className="flex flex-wrap gap-2 mb-4">
+                        {techStack.map((tech) => (
+                            <span
+                                key={tech}
+                                className="px-2 py-1 text-xs rounded-full bg-white/10 text-white"
                             >
-                                点击跳转上线地址
-                            </a>
-                        </MorphingDialogDescription>
+                                {tech}
+                            </span>
+                        ))}
                     </div>
-                    <MorphingDialogClose className='text-zinc-50' />
-                </MorphingDialogContent>
-            </MorphingDialogContainer>
+                    <div className="relative aspect-video mb-4 rounded-lg overflow-hidden">
+                        <img
+                            src={imageUrl}
+                            alt={title}
+                            className="w-full h-full object-cover"
+                        />
+                    </div>
+                    <p className="text-gray-300 whitespace-pre-line">{description}</p>
+                    <a
+                        href={projectUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="mt-4 inline-block px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
+                    >
+                        查看项目
+                    </a>
+                </div>
+            </MorphingDialogContent>
         </MorphingDialog>
     );
 };

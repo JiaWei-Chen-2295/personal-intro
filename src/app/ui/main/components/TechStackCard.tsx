@@ -1,4 +1,5 @@
 'use client'
+import React from 'react'
 import { Card, Text, rem } from '@mantine/core'
 import { motion } from 'framer-motion'
 import { IconBrandReact, IconBrandPython, IconCloud } from '@tabler/icons-react'
@@ -13,10 +14,26 @@ interface Technology {
 }
 
 interface TechStackProps {
-    technologies?: Technology[]
+    technologies: {
+        name: string
+        level: number
+        icon: React.ReactNode
+        color: string
+        description?: string
+    }[]
+    onTechHover: (tech: string | null) => void
+    onTechClick: (tech: string | null) => void
+    selectedTech: string | null
+    hoveredTech: string | null
 }
 
-const TechStackCard = ({ technologies }: TechStackProps) => {
+const TechStackCard: React.FC<TechStackProps> = ({
+    technologies,
+    onTechHover,
+    onTechClick,
+    selectedTech,
+    hoveredTech
+}) => {
     const defaultTechs: Technology[] = [
         {
             name: 'React',
@@ -70,67 +87,53 @@ const TechStackCard = ({ technologies }: TechStackProps) => {
                     boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)'
                 }}>
                 {/* 响应式网格布局 */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 m-14">
-                    {techItems.map((tech, index) => (
-                        <motion.div
-                            key={tech.name}
-                            variants={cardVariants}
-                            className="group relative p-4 rounded-lg transition-all h-full w-auto"
-                            style={{
-                                background: `linear-gradient(45deg, ${tech.color}10, ${tech.color}05)`,
-                                backdropFilter: 'blur(10px)',
-                                minHeight: rem(120)
-                            }}
-                            onMouseEnter={() => setActiveTechIndex(index)}
-                            onMouseLeave={() => setActiveTechIndex(null)}
-                            onClick={() => setActiveTechIndex(index)}>
-                            <div className="flex flex-col h-full">
-                                <div className="flex items-center gap-4 mb-4">
-                                    <div
-                                        className="p-3 rounded-lg"
-                                        style={{
-                                            background: `${tech.color}20`,
-                                            color: tech.color
-                                        }}>
-                                        {tech.icon}
-                                    </div>
-                                    <div className="flex-1">
-                                        <div className="flex justify-between mb-2">
-                                            <Text className="font-semibold text-gray-200">{tech.name}</Text>
-                                            <Text className="text-sm" style={{ color: tech.color }}>
-                                                {tech.level}%
-                                            </Text>
-                                        </div>
-                                        {/* 自定义进度条 */}
-                                        <div
-                                            className="h-2 rounded-full bg-gray-700 overflow-hidden"
-                                            style={{ width: '100%' }}>
-                                            <div
-                                                className="h-full rounded-full"
-                                                style={{
-                                                    width: `${tech.level}%`,
-                                                    background: tech.color
-                                                }}
-                                            />
-                                        </div>
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                    {techItems.map((tech, index) => {
+                        const isActive = selectedTech === tech.name || hoveredTech === tech.name
+                        return (
+                            <motion.div
+                                key={tech.name}
+                                id={`tech-${tech.name}`}
+                                className={`p-4 rounded-lg cursor-pointer transition-all duration-300 ${
+                                    isActive ? 'scale-105 shadow-lg' : ''
+                                }`}
+                                style={{
+                                    backgroundColor: isActive ? `${tech.color}20` : 'transparent',
+                                    border: `1px solid ${isActive ? tech.color : 'transparent'}`,
+                                }}
+                                onMouseEnter={() => {
+                                    onTechHover(tech.name)
+                                    setActiveTechIndex(index)
+                                }}
+                                onMouseLeave={() => {
+                                    onTechHover(null)
+                                    setActiveTechIndex(null)
+                                }}
+                                onClick={() => onTechClick(selectedTech === tech.name ? null : tech.name)}
+                                whileHover={{ scale: 1.05 }}
+                                whileTap={{ scale: 0.95 }}
+                            >
+                                <div className="flex items-center gap-2">
+                                    <div style={{ color: tech.color }}>{tech.icon}</div>
+                                    <span className="text-white font-medium">{tech.name}</span>
+                                </div>
+                                <div className="mt-2">
+                                    <div className="h-2 bg-gray-700 rounded-full overflow-hidden">
+                                        <motion.div
+                                            className="h-full rounded-full"
+                                            style={{ backgroundColor: tech.color }}
+                                            initial={{ width: 0 }}
+                                            animate={{ width: `${tech.level}%` }}
+                                            transition={{ duration: 1, ease: "easeOut" }}
+                                        />
                                     </div>
                                 </div>
-                                {/* 响应式描述文字 */}
-                                {(activeTechIndex === index) && (
-                                    <div className="mt-auto p-2 text-sm text-gray-300 transition-opacity duration-300">
-                                        {tech.description || '暂无描述'}
-                                    </div>
+                                {tech.description && (
+                                    <p className="mt-2 text-sm text-gray-400">{tech.description}</p>
                                 )}
-                            </div>
-                            {/* 光效 */}
-                            <div
-                                className="absolute inset-0 opacity-0 group-hover:opacity-30 transition-opacity pointer-events-none"
-                                style={{
-                                    background: `radial-gradient(circle at 50% 50%, ${tech.color}, transparent)`
-                                }}
-                            />
-                        </motion.div>
-                    ))}
+                            </motion.div>
+                        )
+                    })}
                 </div>
                 {/* 网格背景 */}
                 <div

@@ -78,8 +78,8 @@ export type MorphingDialogProps = {
 
 function MorphingDialog({ children, transition }: MorphingDialogProps) {
   return (
-    <MorphingDialogProvider>
-      <MotionConfig transition={transition}>{children}</MotionConfig>
+    <MorphingDialogProvider transition={transition}>
+      {children}
     </MorphingDialogProvider>
   );
 }
@@ -204,19 +204,38 @@ function MorphingDialogContent({
     }
   });
 
-  return (
-    <motion.div
-      ref={containerRef}
-      layoutId={`dialog-${uniqueId}`}
-      className={cn('overflow-hidden', className)}
-      style={style}
-      role='dialog'
-      aria-modal='true'
-      aria-labelledby={`motion-ui-morphing-dialog-title-${uniqueId}`}
-      aria-describedby={`motion-ui-morphing-dialog-description-${uniqueId}`}
-    >
-      {children}
-    </motion.div>
+  if (!isOpen) return null;
+
+  return createPortal(
+    <div className="fixed inset-0 z-50 flex items-center justify-center">
+      <motion.div
+        className="fixed inset-0 bg-black/50 backdrop-blur-sm"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        onClick={() => setIsOpen(false)}
+      />
+      <motion.div
+        ref={containerRef}
+        layoutId={`dialog-${uniqueId}`}
+        className={cn(
+          'relative z-50 mx-auto max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-lg bg-white shadow-xl dark:bg-zinc-900',
+          className
+        )}
+        style={style}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby={`motion-ui-morphing-dialog-title-${uniqueId}`}
+        aria-describedby={`motion-ui-morphing-dialog-description-${uniqueId}`}
+        initial={{ opacity: 0, scale: 0.95, y: 20 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        exit={{ opacity: 0, scale: 0.95, y: 20 }}
+        transition={{ duration: 0.2 }}
+      >
+        {children}
+      </motion.div>
+    </div>,
+    document.body
   );
 }
 
