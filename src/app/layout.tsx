@@ -5,6 +5,7 @@ import React from "react";
 import { ColorSchemeScript } from '@mantine/core'
 import ClientLayout from "@/app/ui/main/components/ClientLayout";
 import type { Metadata } from "next";
+import { jetBrainsMono, inter, notoSansSC } from "@/app/ui/font";
 
 export const metadata: Metadata = {
   title: "陈佳玮的个人主页",
@@ -24,7 +25,7 @@ export default function RootLayout({
             <head>
                 <ColorSchemeScript defaultColorScheme="dark" />
             </head>
-            <body className="antialiasing bg-black">
+            <body className={`antialiasing bg-black ${jetBrainsMono.variable} ${inter.variable} ${notoSansSC.variable}`}>
                 <ClientLayout>
                     {children}
                 </ClientLayout>

@@ -4,23 +4,29 @@ import React from "react";
 import { MantineProvider } from '@mantine/core';
 import { theme } from "@/app/theme";
 import HeaderNav from "@/app/ui/main/components/HeaderNav";
+import { usePathname } from 'next/navigation';
 
 interface ClientLayoutProps {
     children: React.ReactNode;
 }
 
 const ClientLayout: React.FC<ClientLayoutProps> = ({ children }) => {
+    const pathname = usePathname();
+    const isHomePage = pathname === "/";
+
     return (
         <MantineProvider theme={theme} defaultColorScheme="dark">
-            <HeaderNav />
-            <div className="mt-10">
+            {!isHomePage && <HeaderNav />}
+            <div className={!isHomePage ? "mt-10" : ""}>
                 {children}
             </div>
-            <footer className="text-center text-white mt-10 pb-8">
-                <p>版权所有 © 2026 JavierChen. 保留所有权利。</p>
-            </footer>
+            {!isHomePage && (
+                <footer className="text-center text-white mt-10 pb-8">
+                    <p>版权所有 © 2026 JavierChen. 保留所有权利。</p>
+                </footer>
+            )}
         </MantineProvider>
     );
 };
 
-export default ClientLayout; 
+export default ClientLayout;

@@ -1,31 +1,36 @@
-'use client'
+'use client';
 
-import FirstContainer from "@/app/ui/main/containers/FirstContainer";
-// @ts-expect-error aos
-import AOS from 'aos';
-import {useEffect} from "react";
-import TechStack from "@/app/ui/main/containers/TechStack";
-import MyProjects from "@/app/ui/main/containers/MyProjects";
-import Head from "next/head";
-
+import React from 'react';
+import { Background } from '@/app/ui/portfolio/Background';
+import { Navbar } from '@/app/ui/portfolio/Navbar';
+import { Hero } from '@/app/ui/portfolio/Hero';
+import { FloatingSidebar } from '@/app/ui/portfolio/FloatingSidebar';
+import { ScrollIndicator } from '@/app/ui/portfolio/ScrollIndicator';
+import { ProgressBar } from '@/app/ui/portfolio/ProgressBar';
+import { ProjectsSection } from '@/app/ui/portfolio/projects/ProjectsSection';
 
 export default function Page() {
+  return (
+    <div className="relative min-h-screen w-full overflow-hidden font-sans bg-background-dark text-white">
+      {/* Background Elements (Fixed) */}
+      <Background />
 
-    // div 动画库
-    useEffect(() => {
-        AOS.init()
-    }, [])
+      {/* Navigation */}
+      <Navbar />
 
-    return (
-        <>
-        <Head>
-            <title>陈佳玮的个人主页</title>
-        </Head>
-        <div className={"overflow-x-hidden"}>
-            <FirstContainer />
-            <TechStack />
-            <MyProjects />
+      {/* Main Content Area */}
+      <main className="relative z-10 flex flex-col">
+        {/* Hero Section */}
+        <div className="min-h-screen flex flex-col justify-center px-6 md:px-24">
+            <Hero />
         </div>
-        </>
-    );
+        {/* Projects Section */}
+        <ProjectsSection />
+      </main>
+
+      {/* Fixed UI Elements */}
+     
+      <ProgressBar />
+    </div>
+  );
 }
