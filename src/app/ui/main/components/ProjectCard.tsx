@@ -54,8 +54,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                 >
-                    <div className="absolute inset-0 bg-gradient-to-br from-purple-500/20 to-blue-500/20 rounded-lg" />
-                    <div className="relative p-6 bg-white/5 backdrop-blur-sm rounded-lg border border-white/10">
+                    <div className="relative p-6 bg-gradient-to-br from-gray-900 to-black backdrop-blur-lg rounded-lg border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.3)]">
                         <div className="flex items-center justify-between mb-4">
                             <h3 className="text-xl font-bold text-white">{title}</h3>
                             <span className={`px-2 py-1 text-xs rounded-full ${getStatusColor(status)}`}>
@@ -84,7 +83,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
                 </motion.div>
             </MorphingDialogTrigger>
 
-            <MorphingDialogContent>
+            <MorphingDialogContent className="bg-zinc-900 border border-white/10">
                 <div className="p-6">
                     <h2 className="text-2xl font-bold text-white mb-2">{title}</h2>
                     <p className="text-gray-400 mb-4">{subtitle}</p>

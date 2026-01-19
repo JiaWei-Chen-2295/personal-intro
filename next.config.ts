@@ -115,7 +115,6 @@ const nextConfig: NextConfig = {
             ignoreDuringBuilds: true,
         },
         // 生产环境压缩
-        swcMinify: true,
         poweredByHeader: false,
     }),
 };

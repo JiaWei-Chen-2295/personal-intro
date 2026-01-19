@@ -7,15 +7,13 @@ const TagWithIcon = ({ label, icon, onClick, color = 'success' }) => {
   const tagStyle = {
     backgroundColor: getBackgroundColor(color),
     color: getTextColor(color),
+    borderColor: getBorderColor(color),
   };
 
     return (
         <div
-            className={`inline-flex items-center px-3 py-1 rounded-full text-sm font-medium ${color === 'success' ? 'bg-green-100 text-green-800' :
-                    color === 'warning' ? 'bg-yellow-100 text-yellow-800' :
-                        color === 'error' ? 'bg-red-100 text-red-800' :
-                            'bg-gray-200 text-gray-800'
-                } ${onClick ? 'cursor-pointer hover:opacity-80' : 'cursor-default'}`}
+            className={`inline-flex items-center px-3 py-1 rounded-full text-sm font-medium border ${onClick ? 'cursor-pointer hover:opacity-80' : 'cursor-default'}`}
+            style={tagStyle}
             onClick={onClick}
         >
             {IconComponent && <IconComponent className="w-4 h-4 mr-1" />}
@@ -29,30 +27,45 @@ const TagWithIcon = ({ label, icon, onClick, color = 'success' }) => {
 const getBackgroundColor = (color) => {
     switch (color) {
       case 'success':
-        return '#f6ffed'; // 成功背景色
+        return 'rgba(82, 196, 26, 0.2)'; // 成功背景色 (深色模式适配)
       case 'warning':
-        return '#fffbe6'; // 警告背景色
+        return 'rgba(250, 173, 20, 0.2)'; // 警告背景色
       case 'error':
-        return '#fff1f0'; // 错误背景色
+        return 'rgba(255, 77, 79, 0.2)'; // 错误背景色
       case 'processing':
-        return '#e6f7ff'; // 处理中背景色
+        return 'rgba(24, 144, 255, 0.2)'; // 处理中背景色
       default:
-        return '#f5f5f5'; // 默认背景色
+        return 'rgba(255, 255, 255, 0.1)'; // 默认背景色
     }
   };
 
   const getTextColor = (color) => {
     switch (color) {
       case 'success':
-        return '#52c41a'; // 成功文字颜色
+        return '#73d13d'; // 成功文字颜色 (亮绿色)
       case 'warning':
-        return '#faad14'; // 警告文字颜色
+        return '#ffc53d'; // 警告文字颜色
       case 'error':
-        return '#ff4d4f'; // 错误文字颜色
+        return '#ff7875'; // 错误文字颜色
       case 'processing':
-        return '#1890ff'; // 处理中文字颜色
+        return '#40a9ff'; // 处理中文字颜色
       default:
-        return '#333'; // 默认文字颜色
+        return '#d9d9d9'; // 默认文字颜色
+    }
+  };
+
+  const getBorderColor = (color) => {
+    switch (color) {
+      case 'success':
+        return 'rgba(82, 196, 26, 0.3)';
+      case 'warning':
+        return 'rgba(250, 173, 20, 0.3)';
+      case 'error':
+        return 'rgba(255, 77, 79, 0.3)';
+      case 'processing':
+        return 'rgba(24, 144, 255, 0.3)';
+      default:
+        return 'rgba(255, 255, 255, 0.2)';
     }
   };
 

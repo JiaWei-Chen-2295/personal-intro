@@ -70,13 +70,8 @@ const MyProjects = () => {
     });
 
     return (
-        <div id="project" className="h-full min-h-screen w-full relative overflow-hidden">
-            {/* 背景效果 */}
-            <div className="absolute inset-0 -z-10">
-                <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 to-blue-900/20" />
-                <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-10" />
-            </div>
-
+        <div id="project" className="h-full min-h-screen w-full relative overflow-hidden bg-black">
+            
             <div className="pt-20 flex items-center content-center flex-col">
                 <motion.h2
                     initial={{ opacity: 0, y: 20 }}
@@ -89,7 +84,7 @@ const MyProjects = () => {
                 </motion.h2>
 
                 <TextShimmerWave
-                    className='font-mono text-sm text-center my-8'
+                    className='text-sm text-center my-8 [--base-color:#a1a1aa] [--base-gradient-color:#ffffff]'
                     duration={1}
                 >
                     点击卡片查看详情和体验网址...
@@ -126,9 +121,9 @@ const MyProjects = () => {
             </div>
 
             {/* 项目卡片网格布局 */}
-            <div className="flex items-center content-center flex-col">
+            <div className="w-4/5 mx-auto">
                 <AnimatedGroup
-                    className='grid grid-cols-1 gap-11 p-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3'
+                    className='grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3'
                     preset='scale'
                 >
                     {filteredProjects.map((project, index) => (
