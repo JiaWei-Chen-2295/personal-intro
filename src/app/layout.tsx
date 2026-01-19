@@ -4,6 +4,15 @@ import '@ant-design/v5-patch-for-react-19';
 import React from "react";
 import { ColorSchemeScript } from '@mantine/core'
 import ClientLayout from "@/app/ui/main/components/ClientLayout";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "陈佳玮的个人主页",
+  description: "陈佳玮的个人主页 - JavierChen",
+  icons: {
+    icon: '/favicon.ico',
+  },
+};
 
 export default function RootLayout({
     children,
