@@ -2,8 +2,28 @@
 
 import React from 'react';
 import { Earth3D } from './Earth3D';
+import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 
 export const Background: React.FC = () => {
+  const { scrollYProgress } = useScroll();
+  
+  // 使用弹簧物理效果实现非线性平滑动画
+  const smoothProgress = useSpring(scrollYProgress, {
+    stiffness: 50,  // 刚度：越低越平滑
+    damping: 20,    // 阻尼：控制回弹
+    restDelta: 0.001
+  });
+
+  // 定义动画映射路径
+  // 0% (Hero): 左下角
+  // 40% (TechStack): 移动到右侧，稍微缩小，避开中间的技术栈内容
+  // 80% (Projects): 回到左侧或中间，放大，作为背景
+  const x = useTransform(smoothProgress, [0, 0.45, 0.9], ["0%", "80%", "10%"]);
+  const y = useTransform(smoothProgress, [0, 0.45, 0.9], ["0%", "-30%", "-10%"]);
+  const scale = useTransform(smoothProgress, [0, 0.45, 0.9], [1, 0.7, 0.9]);
+  const opacity = useTransform(smoothProgress, [0, 0.45, 0.9], [1, 0.5, 0.8]);
+  const rotate = useTransform(smoothProgress, [0, 1], [0, 45]); // 增加一点自转效果
+
   return (
     <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none">
       {/* Base Dark Background - Deep Space */}
@@ -14,7 +34,10 @@ export const Background: React.FC = () => {
       <div className="absolute inset-0 star-field stars-2 opacity-20 rotate-12 scale-110"></div>
 
       {/* Cinematic Earth Position: Bottom Left, Looming Large */}
-      <div className="absolute -left-[10%] -bottom-[20%] md:-bottom-[35%] md:-left-[5%] w-[110vw] h-[110vw] md:w-[65vw] md:h-[65vw] pointer-events-auto">
+      <motion.div 
+        style={{ x, y, scale, opacity, rotate }}
+        className="absolute -left-[10%] -bottom-[20%] md:-bottom-[35%] md:-left-[5%] w-[110vw] h-[110vw] md:w-[65vw] md:h-[65vw] pointer-events-auto"
+      >
          
          {/* Container for the 3D Canvas */}
          {/* 1. CSS Mask: Softens the outer boundaries */}
@@ -35,7 +58,7 @@ export const Background: React.FC = () => {
          
          {/* Atmospheric Ambient Glow behind the earth - Broad and subtle */}
          <div className="absolute bottom-[25%] left-[25%] w-2/3 h-2/3 bg-blue-900/15 blur-[150px] rounded-full -z-10"></div>
-      </div>
+      </motion.div>
 
       {/* Decorative Elements - pushed to right side to balance visual weight */}
       <div className="absolute top-[-10%] right-[-5%] w-[600px] h-[600px] bg-primary/5 blur-[150px] rounded-full"></div>

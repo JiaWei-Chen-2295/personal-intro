@@ -41,36 +41,36 @@ const BentoItem: React.FC<BentoItemProps> = ({ item, layerColor }) => {
 
   return (
     <div 
-      className={`col-span-full ${colSpanClasses[item.colSpan] || 'md:col-span-6'} ${getCardStyle()} p-8 md:p-10`}
+      className={`col-span-full ${colSpanClasses[item.colSpan] || 'md:col-span-6'} ${getCardStyle()} p-5 md:p-8`}
       style={{ transform: zTranslation, transformStyle: 'preserve-3d' }}
     >
-      <div className="flex justify-between items-start mb-8" style={{ transform: 'translateZ(30px)' }}>
-        <div className={`w-16 h-16 rounded-2xl flex items-center justify-center transition-all group-hover:scale-110 group-hover:rotate-3 duration-500 ${isExpert ? 'bg-amber-500/20 text-amber-500 border border-amber-500/30 shadow-[0_0_30px_rgba(245,158,11,0.2)]' : 'bg-slate-800 text-slate-300'}`}>
+      <div className="flex justify-between items-start mb-4 md:mb-8" style={{ transform: 'translateZ(30px)' }}>
+        <div className={`w-12 h-12 md:w-16 md:h-16 rounded-xl md:rounded-2xl flex items-center justify-center transition-all group-hover:scale-110 group-hover:rotate-3 duration-500 ${isExpert ? 'bg-amber-500/20 text-amber-500 border border-amber-500/30 shadow-[0_0_30px_rgba(245,158,11,0.2)]' : 'bg-slate-800 text-slate-300'}`}>
           {item.iconType === 'fa' ? (
-            <i className={`${item.icon} text-3xl`}></i>
+            <i className={`${item.icon} text-2xl md:text-3xl`}></i>
           ) : (
-            <span className="material-symbols-outlined text-4xl">{item.icon}</span>
+            <span className="material-symbols-outlined text-3xl md:text-4xl">{item.icon}</span>
           )}
         </div>
-        <span className={`text-[10px] font-black px-3 py-1 rounded-lg uppercase border transition-colors ${getBadgeStyle()}`}>
+        <span className={`text-[9px] md:text-[10px] font-black px-2 py-0.5 md:px-3 md:py-1 rounded-md md:rounded-lg uppercase border transition-colors ${getBadgeStyle()}`}>
           {item.proficiency}
         </span>
       </div>
 
       <div style={{ transform: 'translateZ(20px)' }}>
         {item.tags && (
-          <div className="flex flex-wrap gap-2 mb-4">
+          <div className="flex flex-wrap gap-1.5 md:gap-2 mb-3 md:mb-4">
             {item.tags.map(tag => (
-              <span key={tag} className="px-2.5 py-0.5 rounded-md bg-amber-500/10 text-amber-500 text-[9px] font-black tracking-widest uppercase border border-amber-500/20">
+              <span key={tag} className="px-2 py-0.5 rounded md:rounded-md bg-amber-500/10 text-amber-500 text-[8px] md:text-[9px] font-black tracking-widest uppercase border border-amber-500/20">
                 {tag}
               </span>
             ))}
           </div>
         )}
-        <h3 className={`font-bold mb-3 group-hover:text-white transition-colors ${isExpert ? 'text-3xl text-white' : 'text-xl text-slate-100'}`}>
+        <h3 className={`font-bold mb-2 md:mb-3 group-hover:text-white transition-colors ${isExpert ? 'text-2xl md:text-3xl text-white' : 'text-lg md:text-xl text-slate-100'}`}>
           {item.name}
         </h3>
-        <p className={`text-sm leading-relaxed font-medium ${isExpert ? 'text-slate-300' : 'text-slate-400'}`}>
+        <p className={`text-xs md:text-sm leading-relaxed font-medium ${isExpert ? 'text-slate-300' : 'text-slate-400'}`}>
           {item.description}
         </p>
       </div>

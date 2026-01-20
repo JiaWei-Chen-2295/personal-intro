@@ -3,10 +3,18 @@ import React, { useState, useEffect } from 'react';
 import Layer from './components/Layer';
 import { LAYERS } from './constants';
 import { TextHoverEffect } from '../projects/TextHoverEffect';
+const isMobile = () => /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
 const TechStack3D: React.FC = () => {
   const [is3D, setIs3D] = useState(true);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+
+  useEffect(() => {
+    // 移动端默认关闭3D效果
+    if (isMobile()) {
+        setIs3D(false);
+    }
+  }, []);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
