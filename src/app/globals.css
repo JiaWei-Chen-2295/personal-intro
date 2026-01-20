@@ -63,3 +63,15 @@
 ::-webkit-scrollbar-thumb:hover {
     background: #3b82f6; 
 }
+
+/* 3D Tech Stack Styles */
+.writing-mode-vertical {
+    writing-mode: vertical-rl;
+}
+.perspective-container {
+    perspective: 2500px;
+    transform-style: preserve-3d;
+}
+.preserve-3d {
+    transform-style: preserve-3d;
+}

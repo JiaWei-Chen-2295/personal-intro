@@ -24,6 +24,8 @@ export default function RootLayout({
         <html lang="en" className="dark bg-black" suppressHydrationWarning>
             <head>
                 <ColorSchemeScript defaultColorScheme="dark" />
+                <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+                <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
             </head>
             <body className={`antialiasing bg-black ${jetBrainsMono.variable} ${inter.variable} ${notoSansSC.variable}`}>
                 <ClientLayout>

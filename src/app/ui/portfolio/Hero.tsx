@@ -78,18 +78,20 @@ export const Hero: React.FC = () => {
               <CardItem translateZ="40" className="w-full">
                 <div className="flex flex-col sm:flex-row items-center gap-4 pt-6 w-full md:w-auto justify-end md:justify-start">
                   <a 
-                    href="#work" 
+                    href="#projects" 
                     className="w-full sm:w-auto px-8 py-4 bg-primary hover:bg-blue-600 text-white font-bold rounded-full transition-all hover:-translate-y-1 hover:shadow-[0_0_30px_rgba(59,130,246,0.6)] flex items-center justify-center group"
                   >
-                    View My Work
+                    查看我的项目
                     <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                   </a>
                   
                   <a 
-                    href="#about" 
+                    href="https://www.yuque.com/javierchen"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="w-full sm:w-auto px-8 py-4 bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 text-white font-bold rounded-full transition-all hover:-translate-y-1 text-center"
                   >
-                    About Me
+                    关于我
                   </a>
                 </div>
               </CardItem>
