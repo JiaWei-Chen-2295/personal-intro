@@ -9,6 +9,16 @@ interface ProjectCardProps {
 
 const ProjectCard: React.FC<ProjectCardProps> = ({ project, onClick }) => {
   const isOngoing = project.status === 'In Progress';
+  const divRef = React.useRef<HTMLDivElement>(null);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!divRef.current) return;
+    const rect = divRef.current.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    divRef.current.style.setProperty('--mouse-x', `${x}px`);
+    divRef.current.style.setProperty('--mouse-y', `${y}px`);
+  };
   
   const statusMap = {
     'Completed': '已完成',
@@ -18,9 +28,19 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onClick }) => {
 
   return (
     <div 
+      ref={divRef}
+      onMouseMove={handleMouseMove}
       onClick={() => onClick(project)}
-      className="glass-panel group relative rounded-3xl p-6 cursor-pointer transition-all duration-500 hover:border-primary/50 hover:-translate-y-1 hover:shadow-2xl hover:shadow-primary/10 border border-white/5 bg-white/5 backdrop-blur-sm"
+      className="glass-panel group relative rounded-3xl p-6 cursor-pointer transition-all duration-500 hover:border-white/10 hover:-translate-y-1 hover:shadow-2xl hover:shadow-primary/5 border border-white/5 bg-white/5 backdrop-blur-sm overflow-hidden"
     >
+      {/* Spotlight Effect */}
+      <div 
+        className="pointer-events-none absolute -inset-px opacity-0 transition duration-300 group-hover:opacity-100"
+        style={{
+          background: `radial-gradient(600px circle at var(--mouse-x) var(--mouse-y), rgba(59,130,246,0.1), transparent 40%)`
+        }}
+      />
+
       {/* Header */}
       <div className="flex justify-between items-start mb-4">
         <div>

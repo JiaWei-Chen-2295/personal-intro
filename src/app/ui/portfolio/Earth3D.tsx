@@ -75,6 +75,8 @@ export const Earth3D: React.FC<{ className?: string }> = ({ className }) => {
     const earthGroup = new THREE.Group();
     earthGroup.rotation.z = 15 * Math.PI / 180; 
     earthGroup.rotation.x = 10 * Math.PI / 180;
+    // Set initial rotation to show Asia (approx 90 degrees / 1.57 radians offset)
+    earthGroup.rotation.y = 4.5;
     scene.add(earthGroup);
 
     // --- 3. The Planet ---
@@ -175,6 +177,13 @@ export const Earth3D: React.FC<{ className?: string }> = ({ className }) => {
       cloudMaterial.dispose();
       atmosphereGeometry.dispose();
       atmosphereMaterial.dispose();
+      
+      // Optimization: Dispose textures
+      earthMap.dispose();
+      earthBump.dispose();
+      earthSpec.dispose();
+      earthClouds.dispose();
+      
       renderer.dispose();
     };
   }, []);

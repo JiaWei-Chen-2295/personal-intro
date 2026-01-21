@@ -7,8 +7,15 @@ import { Hero } from '@/app/ui/portfolio/Hero';
 import { FloatingSidebar } from '@/app/ui/portfolio/FloatingSidebar';
 import { ScrollIndicator } from '@/app/ui/portfolio/ScrollIndicator';
 import { ProgressBar } from '@/app/ui/portfolio/ProgressBar';
-import { ProjectsSection } from '@/app/ui/portfolio/projects/ProjectsSection';
-import TechStack3D from './ui/portfolio/TechStack3D/TechStack3D';
+import dynamic from 'next/dynamic';
+
+const TechStack3D = dynamic(() => import('./ui/portfolio/TechStack3D/TechStack3D'), {
+  loading: () => <div className="h-screen w-full flex items-center justify-center text-white/20">Loading Tech Stack...</div>,
+});
+
+const ProjectsSection = dynamic(() => import('@/app/ui/portfolio/projects/ProjectsSection').then(mod => mod.ProjectsSection), {
+  loading: () => <div className="h-screen w-full flex items-center justify-center text-white/20">Loading Projects...</div>,
+});
 
 export default function Page() {
   return (

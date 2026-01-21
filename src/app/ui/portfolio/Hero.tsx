@@ -49,7 +49,7 @@ export const Hero: React.FC = () => {
               {/* Headlines */}
               <CardItem translateZ="80" className="w-full flex flex-col items-end md:items-start">
                 <div className="space-y-2 text-right md:text-left">
-                  <h2 className="text-5xl md:text-7xl font-black text-white drop-shadow-[0_0_15px_rgba(59,130,246,0.5)] h-[1.1em] flex items-center justify-end md:justify-start">
+                  <h2 className="text-6xl md:text-8xl font-black text-white min-h-[1.1em] flex items-center justify-end md:justify-start">
                     <span 
                       className={`inline-block transition-all duration-500 ease-out transform ${
                         isVisible 
@@ -60,8 +60,8 @@ export const Hero: React.FC = () => {
                       {displayText}
                     </span>
                   </h2>
-                  <h1 className="text-5xl md:text-8xl font-black text-white tracking-tight leading-[0.9]">
-                    <span className="block">的个人主页</span>
+                  <h1 className="text-4xl md:text-6xl font-black text-white tracking-tight leading-[1.05] pb-1">
+                    <span className="block text-transparent bg-clip-text bg-gradient-to-b from-white to-white/60">的个人主页</span>
                   </h1>
                 </div>
               </CardItem>
