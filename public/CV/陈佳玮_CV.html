@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>
+        
+    </title>
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.5.1/github-markdown-light.min.css"
+        integrity="sha512-Pmhg2i/F7+5+7SsdoUqKeH7UAZoVMYb1sxGOoJ0jWXAEHP0XV2H4CITyK267eHWp2jpj7rtqWNkmEOw1tNyYpg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.12/dist/katex.min.css" integrity="sha384-PDbUeNCuE6bOPudPOgFyIUEy3UJawJVwr3XlGO90FIuf5qNIoTLSgOJo/dC2ZXV/" crossorigin="anonymous">
+
+    <!-- The loading of KaTeX is deferred to speed up page rendering -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.12/dist/katex.min.js" integrity="sha384-VkqWq8xtm5YQk1BBXczQ8/Sx+DlCzF8cuS43bZwmtVXzRFtyLTqTCdP7MKmKo+KN" crossorigin="anonymous"></script>
+
+    <!-- To automatically render math in text elements, include the auto-render extension: -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.12/dist/contrib/auto-render.min.js" integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" crossorigin="anonymous"
+        onload="renderMathInElement(document.body, {delimiters: [{ left: '$$',  right: '$$',  display: false }]});"></script>
+    <style>
+        .markdown-body {
+            box-sizing: border-box;
+            min-width: 200px;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 45px;
+        }
+
+        @media (max-width: 767px) {
+            .markdown-body {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <article class="markdown-body">
+        <h1>陈佳玮's CV</h1>
+        <ul>
+        <li>Phone: +86 197 2686 2329</li>
+        <li>Email: <a href="mailto:1601020332@qq.com">1601020332@qq.com</a></li>
+        <li>Location: 山西</li>
+        <li>Website: <a href="https://www.javierchen.cn/">www.javierchen.cn</a></li>
+        </ul>
+        <h1>教育经历</h1>
+        <h2><strong>太原师范学院</strong>, 数据科学与大数据技术 -- 9月 2023 – 7月 2027</h2>
+        <p><strong>本科</strong></p>
+        <ul>
+        <li>
+        <p>专业排名前 15%</p>
+        </li>
+        <li>
+        <p>校级二等奖学金</p>
+        </li>
+        </ul>
+        <h1>项目经历</h1>
+        <h2><strong>在线判题系统（OJ）</strong> <a href="https://github.com/JiaWei-Chen-2295/smarter-oj-microsevice">github.com/JiaWei-Chen-2295/smarter-oj-microsevice</a> -- 9月 2024 – 2月 2025</h2>
+        <p>基于 Spring Cloud 微服务 + RabbitMQ + Docker 的编程题目评测系统。系统能够根据管理员预设的题目用例对用户提交的代码进行执行和评测；系统中 <strong>自主实现的代码沙箱</strong> 可作为独立服务供其他开发者调用。</p>
+        <ul>
+        <li>
+        <p>使用 Caffeine + Redis 多级缓存，使题目查询接口的 QPS 提升 <strong>8.3 倍</strong>，缓存命中率高达 <strong>99.9%</strong>。</p>
+        </li>
+        <li>
+        <p>使用多种设计模式，比如 <strong>代理模式</strong>，<strong>策略模式</strong> 增强代码的能力和可扩展性。</p>
+        </li>
+        <li>
+        <p>自主设计判题机模块的架构，定义了代码沙箱的抽象调用接口和多种实现类（第三方代码沙箱），并通过 <strong>静态工厂模式 + Spring 配置化</strong> 的方式实现了对多种代码沙箱的灵活调用。</p>
+        </li>
+        <li>
+        <p>为保证沙箱宿主机的稳定性，选用 Docker 隔离用户代码，使用 <strong>docker-java</strong> 客户端库创建容器隔离执行代码，并通过 TTY 和 Docker 进行传参交互，从而实现了更安全的代码沙箱。</p>
+        </li>
+        </ul>
+        <h2><strong>知识库助手</strong> <a href="https://assistant.javierchen.cn">assistant.javierchen.cn</a> -- 11月 2025 – 3月 2026</h2>
+        <p>基于 Spring AI、PostgreSQL(pgvector)、Elasticsearch 实现的 RAG 知识库问答系统，支持文档上传、解析、向量化入库、混合检索与 Agent 问答。</p>
+        <ul>
+        <li>
+        <p>采用 <strong>pgvector 向量检索 + Elasticsearch 关键词检索</strong> 的混合检索方案，并基于元数据过滤实现租户级文档隔离，提升检索召回效果。</p>
+        </li>
+        <li>
+        <p>基于 Spring AI 封装文档检索、知识库管理等多个 Tool，结合 Function Calling 与 MCP 扩展大模型调用外部能力。</p>
+        </li>
+        <li>
+        <p>设计并实现 <strong>ReAct Agent</strong> 执行链路，完成"检索 -&gt; 推理 -&gt; 工具调用 -&gt; 结果生成"的问答流程编排。</p>
+        </li>
+        <li>
+        <p>实现 Agent 执行日志采集模块，自定义 Advisor 拦截模型调用与流式输出，日志持久化到数据库并对外提供查询接口，提升问题排查与链路可观测性。</p>
+        </li>
+        </ul>
+        <h1>技术能力</h1>
+        <p><strong>Java:</strong> 熟悉集合框架（ArrayList、HashMap 源码及扩容）、I/O、异常、反射；掌握 ConcurrentHashMap、CAS、AQS 等并发机制</p>
+        <p><strong>框架:</strong> 基于 Spring Boot、Spring Cloud、MyBatis 独立开发微服务项目，熟悉 RabbitMQ 消息队列，理解 IoC 与 AOP 原理</p>
+        <p><strong>数据库与缓存:</strong> 熟悉 MySQL 索引、事务、锁、日志，能 SQL 调优，了解读写分离与分库分表；熟练使用 Redis，掌握线程模型、持久化，并能应对缓存雪崩、穿透、击穿</p>
+        <p><strong>LLM 应用:</strong> 熟悉 Spring AI、LangChain 的使用，能够独立实现基于 RAG、Tool Calling、MCP 的智能体应用</p>
+        <p><strong>工程与部署:</strong> 熟悉 Elasticsearch（含倒排索引原理），熟练使用 Maven、Git（多分支协作）、Docker，支持高效开发与容器化部署</p>
+        <p><strong>AI 工具:</strong> 日常深度使用 Cursor、Claude Code 等 AI IDE 工具</p>
+        <h1>荣誉奖项</h1>
+        <ul>
+        <li>
+        <p>中国大学生计算机设计大赛 <strong>国赛三等奖</strong>（2025）</p>
+        </li>
+        <li>
+        <p>华北五省（市、自治区）及港澳台大学生计算机应用大赛 <strong>国赛三等奖</strong>（2024）</p>
+        </li>
+        <li>
+        <p>全国大学生智能汽车竞赛 <strong>省赛二等奖</strong>（2025）</p>
+        </li>
+        </ul>
+    </article>
+</body>
+
+</html>

@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Github, Mail, LayoutGrid, FileText } from 'lucide-react';
+import { Github, Mail, LayoutGrid, FileText, Download, ExternalLink } from 'lucide-react';
 
 export const Navbar: React.FC = () => {
   return (
@@ -24,6 +24,22 @@ export const Navbar: React.FC = () => {
             <a href="#articles" className="hover:text-white transition-colors flex items-center gap-2 group py-2 px-4 rounded-full hover:bg-white/5">
               <FileText className="w-4 h-4 group-hover:scale-110 transition-transform text-primary" />
               <span>文章</span>
+            </a>
+            <a
+              href="/resume"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-white transition-colors flex items-center gap-2 group py-2 px-4 rounded-full hover:bg-white/5"
+            >
+              <ExternalLink className="w-4 h-4 group-hover:scale-110 transition-transform text-primary" />
+              <span>HTML 简历</span>
+            </a>
+            <a
+              href="/resume/pdf"
+              className="hover:text-white transition-colors flex items-center gap-2 group py-2 px-4 rounded-full hover:bg-white/5"
+            >
+              <Download className="w-4 h-4 group-hover:scale-110 transition-transform text-primary" />
+              <span>PDF 简历</span>
             </a>
           </div>
 
